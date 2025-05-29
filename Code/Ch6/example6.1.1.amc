@@ -1,0 +1,9 @@
+# Example 6.1 - Wet excess delay on Mauna Kea
+
+f  0 THz  15 THz  25 MHz
+
+layer
+P 625 mbar
+T 4 C
+h 1 m
+column h2o 1 um_pwv
