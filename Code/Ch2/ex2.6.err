@@ -1,0 +1,14 @@
+ex2.6.amc(4) : Expected
+                 "output {array_name [unit]}+"
+               or
+                 "output format {array_name [unit]}*"
+ex2.6.amc(4) : Unrecognized array_name or unit (pwv?)
+ex2.6.amc(4) : Valid array_names are:
+               f  tau  tx  I  I_diff  Tb  Trj  Tsys  Y  L
+               tau_fsl  k
+ex2.6.amc(4) : The unit "um" cannot be applied to the output
+ex2.6.amc(4) : array "END".  Valid choices are:
+               none
+
+! Error: parse error.  Count: 5
+

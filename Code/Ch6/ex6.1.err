@@ -1,0 +1,33 @@
+# am version 14.0 (build date Sep 30 2024 09:36:11)
+
+# run time 0.635 s
+# dcache hit: 1  miss: 0  discard: 0
+
+f 0 THz  15 THz  25 MHz
+output text  f GHz  L um
+
+tol 0
+selfbroad_vmr_tol 0
+
+geometry plane-parallel
+refract none
+za 0 deg
+PTmode midpoint
+
+T0 0 K
+
+layer
+P 625 mbar
+T 4 C
+h 1 m
+lineshape VVH_750 h2o_lines
+column h2o 1 um_pwv  (vmr 0.002047)
+
+#
+# column densities [cm^-2], including scale factors
+#
+#                           zenith             line-of-sight     
+# total (1 layer):
+#                      h2o  3.342700e+18       3.342700e+18      
+#                            (1 um_pwv)         (1 um_pwv)        
+#
