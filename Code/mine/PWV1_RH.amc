@@ -1,0 +1,353 @@
+# show the PWV in err for data from PyRTlib
+# 1: SUBARCTIC_SUMMER
+# use RH for H2O
+
+f 0 GHz  200 GHz  500 MHz
+output f GHz  Tb K
+tol 1e-4
+
+T0 2.7 K 
+
+layer
+Pbase 2.26e-05 mbar
+Tbase 380 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 3.51211e-13%
+
+layer
+Pbase 3.54e-05 mbar
+Tbase 322.7 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 7.04442e-12%
+
+layer
+Pbase 6e-05 mbar
+Tbase 270.1 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 3.44526e-10%
+
+layer
+Pbase 0.000113 mbar
+Tbase 226 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 4.38555e-08%
+
+layer
+Pbase 0.000248 mbar
+Tbase 190.4 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 1.46262e-05%
+
+layer
+Pbase 0.000606 mbar
+Tbase 176.8 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.000619665%
+
+layer
+Pbase 0.00161 mbar
+Tbase 161.6 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.107274%
+
+layer
+Pbase 0.00451 mbar
+Tbase 161.7 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.456813%
+
+layer
+Pbase 0.0125 mbar
+Tbase 170.6 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.187687%
+
+layer
+Pbase 0.032 mbar
+Tbase 193.6 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.00750831%
+
+layer
+Pbase 0.071 mbar
+Tbase 216.6 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.000802816%
+
+layer
+Pbase 0.147 mbar
+Tbase 239.7 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.00016105%
+
+layer
+Pbase 0.288 mbar
+Tbase 262.7 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 4.69511e-05%
+
+layer
+Pbase 0.537 mbar
+Tbase 274 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 4.01248e-05%
+
+layer
+Pbase 0.987 mbar
+Tbase 277.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 5.9929e-05%
+
+layer
+Pbase 1.34 mbar
+Tbase 276.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 8.81949e-05%
+
+layer
+Pbase 1.82 mbar
+Tbase 273.6 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.000144309%
+
+layer
+Pbase 2.48 mbar
+Tbase 269.5 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.000265951%
+
+layer
+Pbase 3.4 mbar
+Tbase 262.1 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.000645975%
+
+layer
+Pbase 4.72 mbar
+Tbase 254.6 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.00166356%
+
+layer
+Pbase 6.61 mbar
+Tbase 247.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.00446754%
+
+layer
+Pbase 9.4 mbar
+Tbase 240 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.0125025%
+
+layer
+Pbase 13.4 mbar
+Tbase 235.1 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.0290194%
+
+layer
+Pbase 19.23 mbar
+Tbase 231 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.0631188%
+
+layer
+Pbase 27.8 mbar
+Tbase 228.1 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.123367%
+
+layer
+Pbase 32.28 mbar
+Tbase 226.6 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.167189%
+
+layer
+Pbase 37.5 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.226096%
+
+layer
+Pbase 43.6 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.261242%
+
+layer
+Pbase 50.7 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.297455%
+
+layer
+Pbase 59 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.338785%
+
+layer
+Pbase 68.6 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.385347%
+
+layer
+Pbase 79.8 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.428338%
+
+layer
+Pbase 92.8 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.469157%
+
+layer
+Pbase 108 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.539261%
+
+layer
+Pbase 126 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.629138%
+
+layer
+Pbase 146 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.729001%
+
+layer
+Pbase 170 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 0.94433%
+
+layer
+Pbase 197.7 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 1.48072%
+
+layer
+Pbase 230 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 3.81848%
+
+layer
+Pbase 267.7 mbar
+Tbase 225.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 14.1681%
+
+layer
+Pbase 310.8 mbar
+Tbase 232.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 23.6072%
+
+layer
+Pbase 359 mbar
+Tbase 239.2 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 41.2426%
+
+layer
+Pbase 413 mbar
+Tbase 246.1 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 49.168%
+
+layer
+Pbase 474 mbar
+Tbase 253.1 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 50.4662%
+
+layer
+Pbase 541 mbar
+Tbase 260.1 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 53.4354%
+
+layer
+Pbase 616 mbar
+Tbase 265.5 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 60.3592%
+
+layer
+Pbase 700 mbar
+Tbase 270.9 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 64.8876%
+
+layer
+Pbase 792.9 mbar
+Tbase 276.3 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 69.4856%
+
+layer
+Pbase 896 mbar
+Tbase 281.7 K
+lineshape Voigt-Kielkopf
+column dry_air vmr
+column h2o RH 69.4898%
+
