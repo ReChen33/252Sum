@@ -1,351 +1,304 @@
 # show the PWV in err for data from PyRTlib
 # 2 MIDLATITUDE_WINTER
 
-f 0 GHz  200 GHz  1 GHz
+f 10 GHz  200 GHz  0.5 GHz
 output f GHz  Tb K
+za 30 deg
 tol 1e-4
 
-T0 2.7 K 
+T0 6 K 
 
 layer
 Pbase 3.6e-05 mbar
 Tbase 333 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 2e-07
+column h2o RH 3.64023e-12%
 
 layer
 Pbase 5.98e-05 mbar
 Tbase 293 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 2.4e-07
+column h2o RH 6.20163e-11%
 
 layer
 Pbase 0.0001057 mbar
 Tbase 259.5 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 2.8e-07
+column h2o RH 1.38695e-09%
 
 layer
 Pbase 0.0002 mbar
 Tbase 237.1 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 3.4e-07
+column h2o RH 2.40724e-08%
 
 layer
 Pbase 0.0004074 mbar
 Tbase 218.6 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4e-07
+column h2o RH 4.37913e-07%
 
 layer
 Pbase 0.000877 mbar
 Tbase 208.3 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 5.4e-07
+column h2o RH 4.71739e-06%
 
 layer
 Pbase 0.00198 mbar
 Tbase 199.5 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 8.5e-07
+column h2o RH 5.8443e-05%
 
 layer
 Pbase 0.00456 mbar
 Tbase 199.8 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 1.33e-06
+column h2o RH 0.000201374%
 
 layer
 Pbase 0.0103 mbar
 Tbase 210.1 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 2e-06
+column h2o RH 0.000161431%
 
 layer
 Pbase 0.0222 mbar
 Tbase 220.4 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 2.7e-06
+column h2o RH 0.000129996%
 
 layer
 Pbase 0.047 mbar
 Tbase 230.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 3.3e-06
+column h2o RH 0.000106173%
 
 layer
 Pbase 0.095 mbar
 Tbase 240.9 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4e-06
+column h2o RH 9.26513e-05%
 
 layer
 Pbase 0.188 mbar
 Tbase 250.8 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.5e-06
+column h2o RH 8.28634e-05%
 
 layer
 Pbase 0.362 mbar
 Tbase 260.6 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.85e-06
+column h2o RH 7.52492e-05%
 
 layer
 Pbase 0.683 mbar
 Tbase 265.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.95e-06
+column h2o RH 9.68305e-05%
 
 layer
 Pbase 0.94 mbar
 Tbase 265.1 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 5e-06
+column h2o RH 0.000141022%
 
 layer
 Pbase 1.29 mbar
 Tbase 258.5 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 5e-06
+column h2o RH 0.000328062%
 
 layer
 Pbase 1.8 mbar
 Tbase 250.8 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 5e-06
+column h2o RH 0.000881525%
 
 layer
 Pbase 2.53 mbar
 Tbase 243.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.95e-06
+column h2o RH 0.00245211%
 
 layer
 Pbase 3.6 mbar
 Tbase 235.5 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.9e-06
+column h2o RH 0.00733595%
 
 layer
 Pbase 5.18 mbar
 Tbase 227.9 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.85e-06
+column h2o RH 0.0232547%
 
 layer
 Pbase 7.56 mbar
 Tbase 220.4 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.8e-06
+column h2o RH 0.0787003%
 
 layer
 Pbase 11.1 mbar
 Tbase 217.4 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.75e-06
+column h2o RH 0.163823%
 
 layer
 Pbase 16.46 mbar
 Tbase 215.5 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.7e-06
+column h2o RH 0.30366%
 
 layer
 Pbase 24.4 mbar
 Tbase 215.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.65e-06
+column h2o RH 0.462297%
 
 layer
 Pbase 28.6 mbar
 Tbase 215.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.6e-06
+column h2o RH 0.536046%
 
 layer
 Pbase 33.4 mbar
 Tbase 215.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.55e-06
+column h2o RH 0.619208%
 
 layer
 Pbase 39.1 mbar
 Tbase 215.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.53e-06
+column h2o RH 0.721694%
 
 layer
 Pbase 45.8 mbar
 Tbase 215.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.5e-06
+column h2o RH 0.839762%
 
 layer
 Pbase 53.7 mbar
 Tbase 215.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.5e-06
+column h2o RH 0.984612%
 
 layer
 Pbase 62.8 mbar
 Tbase 215.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.5e-06
+column h2o RH 1.15146%
 
 layer
 Pbase 73.6 mbar
 Tbase 215.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.5e-06
+column h2o RH 1.26814%
 
 layer
 Pbase 86.1 mbar
 Tbase 216.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.5e-06
+column h2o RH 1.39457%
 
 layer
 Pbase 100.7 mbar
 Tbase 216.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.6e-06
+column h2o RH 1.56783%
 
 layer
 Pbase 117.8 mbar
 Tbase 217.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.7e-06
+column h2o RH 1.76274%
 
 layer
 Pbase 137.8 mbar
 Tbase 217.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 4.8e-06
+column h2o RH 1.98157%
 
 layer
 Pbase 161.1 mbar
 Tbase 218.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 5e-06
+column h2o RH 2.27143%
 
 layer
 Pbase 188.2 mbar
 Tbase 218.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 6e-06
+column h2o RH 2.99818%
 
 layer
 Pbase 219.9 mbar
 Tbase 219.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 1e-05
+column h2o RH 5.49922%
 
 layer
 Pbase 256.8 mbar
 Tbase 219.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 2.96e-05
+column h2o RH 17.9095%
 
 layer
 Pbase 299.3 mbar
 Tbase 225.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 5.566e-05
+column h2o RH 19.6618%
 
 layer
 Pbase 347.3 mbar
 Tbase 231.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.0001077
+column h2o RH 23.0328%
 
 layer
 Pbase 401.6 mbar
 Tbase 237.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.0002321
+column h2o RH 31.0757%
 
 layer
 Pbase 462.7 mbar
 Tbase 243.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.0005103
+column h2o RH 44.084%
 
 layer
 Pbase 531.3 mbar
 Tbase 249.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.0008241
+column h2o RH 47.2307%
 
 layer
 Pbase 608.1 mbar
 Tbase 255.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.00128
+column h2o RH 49.9219%
 
 layer
 Pbase 693.8 mbar
 Tbase 261.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.002088
+column h2o RH 56.7159%
 
 layer
 Pbase 789.7 mbar
 Tbase 265.2 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.002788
+column h2o RH 65.3677%
 
 layer
 Pbase 897.3 mbar
 Tbase 268.7 K
-lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 0.003454
+column h2o RH 70.3487%
+
