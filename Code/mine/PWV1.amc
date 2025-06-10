@@ -1,12 +1,12 @@
 # show the PWV in err for data from PyRTlib
 # 1 SUBARCTIC_SUMMER
 
-f 10 GHz  200 GHz  0.5 GHz
+f 10 GHz  200 GHz  1 GHz
 output f GHz  Tb K
 za 30 deg
 tol 1e-4
 
-T0 8 K 
+T0 2.7 K 
 
 layer
 Pbase 2.26e-05 mbar
