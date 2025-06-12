@@ -17,7 +17,7 @@ trop_h2o_scale_factor=$(awk -v n="$PWV" 'BEGIN { print n * 3.005 }')
 
 printf "%f 0\n" $PWV >> 1_10pwv_inp.txt
 
-am ACT_DJF_5_1_10.amc  10 GHz  200 GHz  100 MHz  30 deg  $trop_h2o_scale_factor \
+am ACT_DJF_5_1_10.amc  10 GHz  200 GHz  10 MHz  30 deg  $trop_h2o_scale_factor \
     >> 1_10pwv_inp.txt 2>>1_10pwv_inp.err
 
 done

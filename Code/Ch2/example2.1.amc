@@ -5,6 +5,6 @@ T0 77 K                      # background temperature
 
 layer                        # introduces a layer
 P 1013.25 mbar               # layer pressure
-T 20 C                       # layer temperature
+T 20 C                      # layer temperature
 h 1 m                        # layer thickness
 column h2o vmr 0.012         # adds a column of h2o to this layer

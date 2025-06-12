@@ -1,0 +1,31 @@
+# am version 14.0 (build date Sep 30 2024 09:36:11)
+
+# run time 0.000 s
+# dcache hit: 0  miss: 0  discard: 0
+
+f 0 GHz  1000 GHz  1 GHz
+output text  f GHz  tau neper
+
+tol 0
+selfbroad_vmr_tol 0.003
+
+geometry plane-parallel
+refract none
+za 0 deg
+PTmode midpoint
+
+T0 0 K
+
+layer
+P 1 atm
+T -60 C
+column iwp_abs_Rayleigh 1 kg*m^-2
+
+#
+# column densities [cm^-2], including scale factors
+#
+#                           zenith             line-of-sight     
+# total (1 layer):
+#         iwp_abs_Rayleigh  3.342700e+21       3.342700e+21      
+#                            (1 kg*m^-2)        (1 kg*m^-2)       
+#
