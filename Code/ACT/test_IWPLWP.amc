@@ -1,0 +1,23 @@
+f 0 GHz 1000 GHz 1 GHz
+output f GHz  Tb K
+za 30 deg
+tol 1e-4
+
+T0 2.7 K
+
+layer stratosphere
+Pbase 70 mbar
+Tbase 213.0 K
+column iwp_abs_Rayleigh 1 kg*m^-2
+column h2o vmr 6.22e-06
+
+layer troposphere
+Pbase 500 mbar
+Tbase 255.7 K
+lineshape Voigt-Kielkopf
+column iwp_abs_Rayleigh vmr 6.22e-06
+column h2o vmr 6.22e-06
+
+
+
+

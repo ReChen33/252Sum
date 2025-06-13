@@ -1,5 +1,5 @@
 f 10 GHz  200 GHz  100 MHz
-output f GHz  Tb K
+output f GHz  tx  Tb K
 za 30 deg
 tol 1e-4
 
