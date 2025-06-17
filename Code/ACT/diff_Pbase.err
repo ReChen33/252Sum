@@ -1,7 +1,7 @@
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.583 s
-# dcache hit: 268  miss: 2  discard: 2
+# run time 0.182 s
+# dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
 output text  f GHz  tx none  Tb K
@@ -488,7 +488,7 @@ column o3 hydrostatic 4.26e-08  (3.03649e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.151 s
+# run time 0.113 s
 # dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
@@ -975,7 +975,7 @@ column o3 hydrostatic 4.26e-08  (3.0444e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.133 s
+# run time 0.116 s
 # dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
@@ -1462,8 +1462,8 @@ column o3 hydrostatic 4.26e-08  (3.05235e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.408 s
-# dcache hit: 269  miss: 1  discard: 1
+# run time 0.163 s
+# dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
 output text  f GHz  tx none  Tb K
@@ -1946,7 +1946,7 @@ column o3 hydrostatic 4.26e-08  (3.79561e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.117 s
+# run time 0.104 s
 # dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
@@ -2430,7 +2430,7 @@ column o3 hydrostatic 4.26e-08  (3.80549e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.117 s
+# run time 0.102 s
 # dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
@@ -2914,7 +2914,7 @@ column o3 hydrostatic 4.26e-08  (3.81543e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.320 s
+# run time 0.209 s
 # dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
@@ -3395,7 +3395,7 @@ column o3 hydrostatic 4.26e-08  (4.55473e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.137 s
+# run time 0.116 s
 # dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz
@@ -3876,7 +3876,7 @@ column o3 hydrostatic 4.26e-08  (4.56659e+16 cm^-2)
 
 # am version 14.0 (build date Sep 30 2024 09:36:11)
 
-# run time 0.138 s
+# run time 0.123 s
 # dcache hit: 270  miss: 0  discard: 0
 
 f 10 GHz  200 GHz  100 MHz

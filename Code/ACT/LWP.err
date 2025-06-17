@@ -1,0 +1,38 @@
+
+! Warning: Encountered in-band lines narrower than the frequency
+!          grid spacing.  The output configuration data includes
+!          the unresolved line count after each column definition
+!          for which this occurred.  Count: 6
+! Error: T outside valid range for lwp_abs_Rayleigh.
+
+
+! Warning: Encountered in-band lines narrower than the frequency
+!          grid spacing.  The output configuration data includes
+!          the unresolved line count after each column definition
+!          for which this occurred.  Count: 6
+! Error: T outside valid range for lwp_abs_Rayleigh.
+
+
+! Warning: Encountered in-band lines narrower than the frequency
+!          grid spacing.  The output configuration data includes
+!          the unresolved line count after each column definition
+!          for which this occurred.  Count: 6
+! Error: T outside valid range for lwp_abs_Rayleigh.
+
+
+! Warning: Encountered in-band lines narrower than the frequency
+!          grid spacing.  The output configuration data includes
+!          the unresolved line count after each column definition
+!          for which this occurred.  Count: 6
+! Error: T outside valid range for lwp_abs_Rayleigh.
+
+
+! Warning: Encountered in-band lines narrower than the frequency
+!          grid spacing.  The output configuration data includes
+!          the unresolved line count after each column definition
+!          for which this occurred.  Count: 111
+! Error: T outside valid range for lwp_abs_Rayleigh.
+! Warning: lwp_abs_Rayleigh has been found on a layer for which
+!          T is below the typical lower limit (-35 C) for liquid
+!          water clouds.  Count: 3
+
