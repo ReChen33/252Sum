@@ -1,5 +1,3 @@
-# the python code from Sofia
-
 import os, sys
 from pylab import *
 from scipy.optimize import curve_fit,least_squares
@@ -1105,6 +1103,7 @@ class AM_functions(object):
             os.makedirs(self.path_to_all+'am_datfiles_Az/'+template[:-4]+'/'+filename[:-4])
 
         if clean_mod==0:
+            #!!!
             D_clean, waz, mod_removed_data=raz.read_Az_fast(filename, pathtofn=pathtofn, clean_mod=clean_mod, clean_method=clean_method)
         else:
             D_clean, waz, mod_removed_data, p_double, p_err_double, p_single, p_err_single, calib_data_Gavg, FH =raz.read_Az_fast(filename, pathtofn=pathtofn, clean_mod=clean_mod, clean_method=clean_method)
