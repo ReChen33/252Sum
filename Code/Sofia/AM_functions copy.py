@@ -902,8 +902,8 @@ class AM_functions(object):
 
                 delta=np.zeros(4) #DT/D(el) for each of the 4 channels around el=55deg
 
-                el55_list=np.where(el_tilt>=55.)
-                el55_list=el55_list[0]
+                el55_list=np.where(el_tilt>=55.) #return index of elements in el_tilt that are >= 55 degrees
+                el55_list=el55_list[0] #????
 
                 center0=T0_tilt[el55_list[0]]
                 up0=center0+(0.01*center0)
