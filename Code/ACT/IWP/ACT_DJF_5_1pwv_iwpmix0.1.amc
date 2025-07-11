@@ -1,4 +1,4 @@
-f 10 GHz  400 GHz  400 MHz
+f 10 GHz  1000 GHz  500 MHz
 output f GHz  tx  Tb K
 za 30 deg
 tol 1e-4
