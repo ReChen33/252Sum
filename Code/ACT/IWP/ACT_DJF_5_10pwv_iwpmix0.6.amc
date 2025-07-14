@@ -13,8 +13,8 @@ Pbase 0.1 mbar
 Tbase 215.7 K
 lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 6.219999999999998e-07 
-column iwp_abs_Rayleigh vmr 5.598e-06
+column h2o vmr 2.488e-06 
+column iwp_abs_Rayleigh vmr 3.7319999999999996e-06
 column o3 vmr 1.78e-06
 
 layer mesosphere
@@ -22,8 +22,8 @@ Pbase 0.3 mbar
 Tbase 237.9 K
 lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 6.469999999999998e-07 
-column iwp_abs_Rayleigh vmr 5.823e-06
+column h2o vmr 2.588e-06 
+column iwp_abs_Rayleigh vmr 3.8819999999999994e-06
 column o3 vmr 1.66e-06
 
 layer mesosphere
@@ -31,8 +31,8 @@ Pbase 0.4 mbar
 Tbase 244.2 K
 lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 6.719999999999999e-07 
-column iwp_abs_Rayleigh vmr 6.048e-06
+column h2o vmr 2.6880000000000004e-06 
+column iwp_abs_Rayleigh vmr 4.032e-06
 column o3 vmr 1.61e-06
 
 layer mesosphere
@@ -40,8 +40,8 @@ Pbase 0.5 mbar
 Tbase 249.9 K
 lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 6.699999999999998e-07 
-column iwp_abs_Rayleigh vmr 6.030000000000001e-06
+column h2o vmr 2.68e-06 
+column iwp_abs_Rayleigh vmr 4.02e-06
 column o3 vmr 1.78e-06
 
 layer mesosphere
@@ -49,8 +49,8 @@ Pbase 0.7 mbar
 Tbase 257.4 K
 lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 6.629999999999998e-07 
-column iwp_abs_Rayleigh vmr 5.967e-06
+column h2o vmr 2.652e-06 
+column iwp_abs_Rayleigh vmr 3.978e-06
 column o3 vmr 2.07e-06
 
 layer stratosphere
@@ -58,174 +58,174 @@ Pbase 1 mbar
 Tbase 260.5 K
 lineshape Voigt-Kielkopf
 column dry_air vmr
-column h2o vmr 6.459999999999998e-07 
-column iwp_abs_Rayleigh vmr 5.814e-06
+column h2o vmr 2.584e-06 
+column iwp_abs_Rayleigh vmr 3.876e-06
 column o3 vmr 2.58e-06
 
 layer stratosphere
 Pbase 2 mbar
 Tbase 252.9 K
 column dry_air vmr
-column h2o vmr 6.089999999999999e-07 
-column iwp_abs_Rayleigh vmr 5.4810000000000005e-06
+column h2o vmr 2.436e-06 
+column iwp_abs_Rayleigh vmr 3.654e-06
 column o3 vmr 3.87e-06
 
 layer stratosphere
 Pbase 3 mbar
 Tbase 245.5 K
 column dry_air vmr
-column h2o vmr 5.659999999999999e-07 
-column iwp_abs_Rayleigh vmr 5.094e-06
+column h2o vmr 2.2640000000000003e-06 
+column iwp_abs_Rayleigh vmr 3.3959999999999998e-06
 column o3 vmr 5.70e-06
 
 layer stratosphere
 Pbase 4 mbar
 Tbase 241.1 K
 column dry_air vmr
-column h2o vmr 5.379999999999999e-07 
-column iwp_abs_Rayleigh vmr 4.842e-06
+column h2o vmr 2.1520000000000003e-06 
+column iwp_abs_Rayleigh vmr 3.228e-06
 column o3 vmr 7.19e-06
 
 layer stratosphere
 Pbase 5 mbar
 Tbase 237.5 K
 column dry_air vmr
-column h2o vmr 5.199999999999999e-07 
-column iwp_abs_Rayleigh vmr 4.68e-06
+column h2o vmr 2.08e-06 
+column iwp_abs_Rayleigh vmr 3.12e-06
 column o3 vmr 8.18e-06
 
 layer stratosphere
 Pbase 7 mbar
 Tbase 231.6 K
 column dry_air vmr
-column h2o vmr 5.029999999999999e-07 
-column iwp_abs_Rayleigh vmr 4.527e-06
+column h2o vmr 2.012e-06 
+column iwp_abs_Rayleigh vmr 3.018e-06
 column o3 vmr 8.88e-06
 
 layer stratosphere
 Pbase 10 mbar
 Tbase 227.1 K
 column dry_air vmr
-column h2o vmr 4.859999999999999e-07 
-column iwp_abs_Rayleigh vmr 4.374e-06
+column h2o vmr 1.944e-06 
+column iwp_abs_Rayleigh vmr 2.916e-06
 column o3 vmr 9.20e-06
 
 layer stratosphere
 Pbase 20 mbar
 Tbase 218.7 K
 column dry_air vmr
-column h2o vmr 4.659999999999999e-07 
-column iwp_abs_Rayleigh vmr 4.194e-06
+column h2o vmr 1.8640000000000003e-06 
+column iwp_abs_Rayleigh vmr 2.796e-06
 column o3 vmr 7.99e-06
 
 layer stratosphere
 Pbase 30 mbar
 Tbase 213.2 K
 column dry_air vmr
-column h2o vmr 4.4799999999999994e-07 
-column iwp_abs_Rayleigh vmr 4.0320000000000005e-06
+column h2o vmr 1.7920000000000002e-06 
+column iwp_abs_Rayleigh vmr 2.688e-06
 column o3 vmr 5.53e-06
 
 layer stratosphere
 Pbase 40 mbar
 Tbase 208.2 K
 column dry_air vmr
-column h2o vmr 4.399999999999999e-07 
-column iwp_abs_Rayleigh vmr 3.96e-06
+column h2o vmr 1.76e-06 
+column iwp_abs_Rayleigh vmr 2.64e-06
 column o3 vmr 3.44e-06
 
 layer stratosphere
 Pbase 50 mbar
 Tbase 203.0 K
 column dry_air vmr
-column h2o vmr 4.349999999999999e-07 
-column iwp_abs_Rayleigh vmr 3.915e-06
+column h2o vmr 1.74e-06 
+column iwp_abs_Rayleigh vmr 2.61e-06
 column o3 vmr 2.08e-06
 
 layer stratosphere
 Pbase 70 mbar
 Tbase 193.0 K
 column dry_air vmr
-column h2o vmr 4.179999999999999e-07 
-column iwp_abs_Rayleigh vmr 3.7619999999999997e-06
+column h2o vmr 1.672e-06 
+column iwp_abs_Rayleigh vmr 2.508e-06
 column o3 vmr 1.04e-06
 
 layer troposphere
 Pbase 100 mbar
 Tbase 191.8 K
 column dry_air vmr
-column h2o vmr 3.4099999999999994e-07 
-column iwp_abs_Rayleigh vmr 3.069e-06
+column h2o vmr 1.364e-06 
+column iwp_abs_Rayleigh vmr 2.046e-06
 column o3 vmr 3.23e-07
 
 layer troposphere
 Pbase 150 mbar
 Tbase 204.7 K
 column dry_air vmr
-column h2o vmr 5.729999999999999e-07 
-column iwp_abs_Rayleigh vmr 5.157e-06
+column h2o vmr 2.2920000000000002e-06 
+column iwp_abs_Rayleigh vmr 3.438e-06
 column o3 vmr 9.50e-08
 
 layer troposphere
 Pbase 200 mbar
 Tbase 218.4 K
 column dry_air vmr
-column h2o vmr 1.7999999999999997e-06 
-column iwp_abs_Rayleigh vmr 1.62e-05
+column h2o vmr 7.2000000000000005e-06 
+column iwp_abs_Rayleigh vmr 1.08e-05
 column o3 vmr 5.11e-08
 
 layer troposphere
 Pbase 250 mbar
 Tbase 229.9 K
 column dry_air vmr
-column h2o vmr 3.6599999999999993e-06 
-column iwp_abs_Rayleigh vmr 3.294e-05
+column h2o vmr 1.4640000000000002e-05 
+column iwp_abs_Rayleigh vmr 2.196e-05
 column o3 vmr 4.31e-08
 
 layer troposphere
 Pbase 300 mbar
 Tbase 239.5 K
 column dry_air vmr
-column h2o vmr 4.649999999999999e-06 
-column iwp_abs_Rayleigh vmr 4.185e-05
+column h2o vmr 1.86e-05 
+column iwp_abs_Rayleigh vmr 2.7899999999999997e-05
 column o3 vmr 4.26e-08
 
 layer troposphere
 Pbase 350 mbar
 Tbase 247.7 K
 column dry_air vmr
-column h2o vmr 4.8299999999999995e-06 
-column iwp_abs_Rayleigh vmr 4.347e-05
+column h2o vmr 1.932e-05 
+column iwp_abs_Rayleigh vmr 2.898e-05
 column o3 vmr 4.31e-08
 
 layer troposphere
 Pbase 400 mbar
 Tbase 254.7 K
 column dry_air vmr
-column h2o vmr 6.859999999999999e-06 
-column iwp_abs_Rayleigh vmr 6.174e-05
+column h2o vmr 2.744e-05 
+column iwp_abs_Rayleigh vmr 4.116e-05
 column o3 vmr 4.38e-08
 
 layer troposphere
 Pbase 450 mbar
 Tbase 260.9 K
 column dry_air vmr
-column h2o vmr 1.3599999999999997e-05 
-column iwp_abs_Rayleigh vmr 0.0001224
+column h2o vmr 5.44e-05 
+column iwp_abs_Rayleigh vmr 8.159999999999999e-05
 column o3 vmr 4.41e-08
 
 layer troposphere
 Pbase 500 mbar
 Tbase 266.3 K
 column dry_air vmr
-column h2o vmr 2.5799999999999994e-05 
-column iwp_abs_Rayleigh vmr 0.00023219999999999998
+column h2o vmr 0.0001032 
+column iwp_abs_Rayleigh vmr 0.0001548
 column o3 vmr 4.36e-08
 
 layer troposphere
 Pbase 542 mbar
 Tbase 270.0 K
 column dry_air vmr
-column h2o vmr 5.079999999999999e-05 
-column iwp_abs_Rayleigh vmr 0.0004572
+column h2o vmr 0.0002032 
+column iwp_abs_Rayleigh vmr 0.0003048
 column o3 vmr 4.26e-08

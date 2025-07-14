@@ -16,8 +16,12 @@ layer troposphere
 Pbase 500 mbar
 Tbase 255.7 K
 lineshape Voigt-Kielkopf
-column iwp_abs_Rayleigh vmr 6.22e-06
+column iwp_abs_Rayleigh 2 kg*m^-2
 
-
+layer troposphere
+Pbase 600 mbar
+Tbase 275.7 K
+lineshape Voigt-Kielkopf
+column iwp_abs_Rayleigh 4 kg*m^-2
 
 
