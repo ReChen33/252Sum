@@ -14,7 +14,7 @@
 #
 #   A. Molod et al (2015), Development of the GEOS-5 atmospheric general
 #   circulation model: evolution from MERRA to MERRA2.  Geoscience Model
-#   Development 8:1339. 
+#   Development 8:1339.
 #
 # MERRA is produced by the NASA/Goddard Global Modeling and Assimilation
 # Office (GMAO).  MERRA-2 data are archived and distributed by the Goddard
@@ -29,17 +29,22 @@
 #   Accessed 2016 Sep 2 at doi:10.5067/QBZ6MG944HW0
 ?
 ? Usage:
-?  am SPole_annual_50.amc  f_min  f_max  df  zenith_angle  trop_h2o_scale_factor
+?  am SPole_annual_50.amc  zenith_angle[deg]  filename
 ?
-? Example:
-?  am SPole_annual_50.amc  0 GHz  300 GHz  10 MHz  0 deg  1.0
-?
-f %1 %2  %3 %4  %5 %6
-output f GHz  tau  tx  Trj K  Tb K
-za %7 %8
+
+fit Trj %2
+fit_data_columns 1 3 2 0
+fit_data_units GHz K
+fit_verbose 1
+
+f 170 GHz 195 GHz 2.0 MHz
+ifspec dsb 183.3 GHz
+fif 0 GHz  10 GHz
+output f GHz  tau  Trj K
+za %1 deg
 tol 1e-4
 
-Nscale troposphere h2o %9
+Nscale troposphere h2o 1.0 0.5
 
 T0 2.7 K
 
