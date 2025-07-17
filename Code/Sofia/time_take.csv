@@ -1,0 +1,5 @@
+TIME,take TIME (seconds)
+read results/20250101_010135_scanAz_slow.txt,0.0154
+20250101T010136.531267,0.9359
+
+Total time taken: 0.9513 seconds
