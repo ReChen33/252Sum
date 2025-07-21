@@ -1,6 +1,6 @@
 """
 25/07/17
-Ver 1.1
+Ver 2.0
 Yifu
 
 Purpose:
@@ -16,6 +16,7 @@ from typing import Dict
 from time import perf_counter
 from datetime import datetime
 import glob
+from time import sleep
 
 def remove_old_files(path_save = "results/"):
     """"
@@ -28,44 +29,61 @@ def remove_old_files(path_save = "results/"):
             #print(f"Not Removing File: {file}")
             os.remove(file)
         for file in glob.glob(f'{path_save}*.dat.amc'):
-            #print(f"Removing file: {file}")
+            #print(f"Not Removing File: {file}")
             os.remove(file)
         for file in glob.glob(f'{path_save}*.dat.ams'):
-            #print(f"Removing file: {file}")
+            #print(f"Not Removing File: {file}")
             os.remove(file)
         for file in glob.glob(f'{path_save}*.dat.amr'):
-            #print(f"Removing file: {file}")
+            #print(f"Not Removing File: {file}")
             os.remove(file)
     except Exception as e:
         print(f"Error removing files: {e}")
 
+    #print("am fit files removed done.")
 
-
-def dat2Am(am_temp_inp = "SPole_annual_50.amc", zen_ang = 45, dat_fn_inp = "test.dat", path = None):
+def read_am(all_lines_variable:list, time:str, zen_ang:float):
     """
     purpose:
-    use the am fits(am manual Ch7) to create amc;ams;amr files 
-    based on the {am_template}, {zen_ang}, and {dat_filename}   
+        Read the *.dat.amc files 
+
+        write to time_pwv.csv file
+            DATE(YYYYMMDD)
+            START TIME(HHMMSS.Microsec)
+            END TIME(HHMMSS.Microsec)
+            TIME PASSED (sec)
+            PWV TOTAL zenith
+            PWV TOTAL line-of-sight
+            zenith angle
+            standard_deviation_of_residuals
+            Nscale_troposphere_h2o
+
+        based on lines information in the *.dat.amc file, not on the index #
 
     input:
-        am_template: str, the am template filename
-        zen_ang: float, the zenith angle
-        dat_filename: str, the dat filename
+        all_lines_variable: list[str], the lines of the *.dat.amc file
 
-    output:
-        None, 
-        but creates {dat_filename}.amc; {dat_filename}.ams; {dat_filename}.amr files
     """
 
-    os.system(f"am {am_temp_inp} {zen_ang} {dat_fn_inp}")
-    #print(f"{dat_fn_inp} created using {am_temp_inp} at zenith angle {zen_ang} degrees.")
+    std_line = ""
+    nscale_line = ""
+    pwv_line_total = ""
 
-    #read the PWV from the new amc(index must read from new amc)
-    file_variable = open(dat_fn_inp+'.amc')
-    all_lines_variable = file_variable.readlines()
-    file_variable.close()
+    for i in range(len(all_lines_variable)):
+        #print("reading line:", i, all_lines_variable[i].strip())
 
-    nscale_line=all_lines_variable[45]
+        if all_lines_variable[i].startswith('# standard deviation of residuals'):
+            std_line = all_lines_variable[i]
+
+        if all_lines_variable[i].startswith('Nscale troposphere h2o'):
+            nscale_line = all_lines_variable[i]
+
+        if all_lines_variable[i].startswith('# total'):
+            pwv_line_total = all_lines_variable[i+3]
+            #print(f"pwv_line_total: {pwv_line_total}")
+
+
+    #nscale_line=all_lines_variable[45] # get the nscale line(Ln 46)
     nscale_com = nscale_line.split(' ')[0]  #get the nscale comment
     nscale_com += "_" + nscale_line.split(' ')[1]
     nscale_com += "_" + nscale_line.split(' ')[2]
@@ -74,7 +92,7 @@ def dat2Am(am_temp_inp = "SPole_annual_50.amc", zen_ang = 45, dat_fn_inp = "test
     nscale_value = nscale_line.split(' ')[3].strip()  #get the nscale value
     #print('nscale_value=', nscale_value)
 
-    std_line=all_lines_variable[10]
+    #std_line=all_lines_variable[10] 
     std_com = std_line.split(' ')[1]  #get the std comment
     std_com += "_" + std_line.split(' ')[2]
     std_com += "_" + std_line.split(' ')[3]
@@ -87,19 +105,17 @@ def dat2Am(am_temp_inp = "SPole_annual_50.amc", zen_ang = 45, dat_fn_inp = "test
     # pwv_line_meso=all_lines_variable[484]
     # pwv_line_strato=all_lines_variable[491]
     # pwv_line_tropo=all_lines_variable[498]
-    pwv_line_total=all_lines_variable[505]
+
+    #for SPole_annual_50.amc, index is 505
+    #pwv_line_total=all_lines_variable[505]
+
+    #for ACT_annual_50_fit.amc, index is 463(Ln 464)
+    #pwv_line_total=all_lines_variable[463] 
 
     # print('pwv_line_meso=', pwv_line_meso)
     # print('pwv_line_strato=', pwv_line_strato)
     # print('pwv_line_tropo=', pwv_line_tropo)
     # print('pwv_line_total=', pwv_line_total)
-
-    #get the time from the dat_fn_inp
-    time = dat_fn_inp
-    if path is not None:
-        # {time} except: "~/results/20250101S010147.191706E010156.795119_scanAz_slow.dat"
-        time = time.split('/')[-1] 
-    time = time.split('_')[0]  
 
     #{time} except: "20250101S010136.531267E010146.233995"
     time_date = time.split('S')[0]  # get the date part (YYYYMMDD)   
@@ -129,8 +145,44 @@ def dat2Am(am_temp_inp = "SPole_annual_50.amc", zen_ang = 45, dat_fn_inp = "test
             pwv_file.write(f"{time_date},{time_start},{time_end},{time_pass},{pwv_tot_zen},{pwv_tot_LoS},{zen_ang},{std_value} {std_unit},{nscale_value}\n")
         pwv_file.close()
 
+def dat2Am(am_temp_inp = "SPole_annual_50.amc", zen_ang = 45, dat_fn_inp = "test.dat", path = None):
+    """
+    purpose:
+    use the am fits(am manual Ch7) to create amc;ams;amr files 
+    based on the {am_template}, {zen_ang}, and {dat_filename}   
 
-def slow2Dat(path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.txt"):
+    input:
+        am_template: str, the am template filename
+        zen_ang: float, the zenith angle
+        dat_filename: str, the dat filename
+
+    output:
+        None, 
+        but creates {dat_filename}.amc; {dat_filename}.ams; {dat_filename}.amr files
+    """
+
+    os.system(f"am {am_temp_inp} {zen_ang} {dat_fn_inp}")
+    #print(f"{dat_fn_inp} created using {am_temp_inp} at zenith angle {zen_ang} degrees.")
+
+    sleep(0.001)
+
+    #read the PWV from the new amc(index must read from new amc)
+    file_variable = open(dat_fn_inp+'.amc')
+    all_lines_variable = file_variable.readlines()
+    file_variable.close()
+
+    #get the time from the dat_fn_inp
+    time = dat_fn_inp
+    if path is not None:
+        # {time} except: "~/results/20250101S010147.191706E010156.795119_scanAz_slow.dat"
+        time = time.split('/')[-1] 
+    time = time.split('_')[0]  
+
+    # read the amc file and write to time_pwv.csv    
+    read_am(all_lines_variable, time, zen_ang)  
+
+
+def slow2Dat(path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.txt", am_temp = "SPole_annual_50.amc"):
     """
     purpose:
     read the *_scanAz_slow.txt file and write a dat file
@@ -148,6 +200,10 @@ def slow2Dat(path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.tx
 
     if path is not None:
         scanAz_slow_filename = os.path.join(path, scanAz_slow_filename)
+
+    am_temp = am_temp_inp #used in loop to function dat2Am
+    if path is not None:
+        am_temp = os.path.join(path, am_temp)
     
     #use a Dict to save the data
     #Dict = ["TIME":["TSRC0":value, "TSRC1":value, "TSRC2":value, "TSRC3":value, "EL":value, "AZ":value]]
@@ -191,7 +247,7 @@ def slow2Dat(path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.tx
 
     #A for loop to create the dat files based on diff TIME
 
-    num2Pro = 64 # number of TIME keys to process at one time
+    num2Pro = 640 # number of TIME keys to process at one time
     
     for i in range(0, len(out_dict.keys()), num2Pro):  # process {num2Pro} entries at a time
         #print(i+num2Pro, "out of", len(out_dict.keys()), "TIME keys processed.")
@@ -247,6 +303,10 @@ def slow2Dat(path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.tx
         EL /= len(obs_values["EL"])
         #AZ /= len(obs_values["AZ"])
 
+        #not except the dat_filename exists, need remove the old one
+        if os.path.exists(dat_filename):
+            os.remove(dat_filename)
+
         with open(dat_filename,'w+') as f:
             #print('writing on '+ dat_filename)
             f.write('1.25 1.50 {0}\n'.format(T0))
@@ -257,9 +317,6 @@ def slow2Dat(path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.tx
         f.close() 
 
         zen = 90 - EL  # calculate zenith angle to elevation
-        am_temp = "SPole_annual_50.amc"
-        if path is not None:
-            am_temp = os.path.join(path, am_temp)
 
         #call the dat2Am function to create amc;ams;amr files
         dat2Am(am_temp_inp = am_temp, dat_fn_inp=dat_filename, zen_ang=zen, path=path)
@@ -291,7 +348,7 @@ except Exception as e:
 
 path_save = "results/"
 
-sAz_slow_FNs = [ "20250101_010135_scanAz_slow.txt" ]
+sAz_slow_FNs = [  ]
 
 try:
     # get all *_scanAz_slow.txt files in the current directory
@@ -302,10 +359,10 @@ try:
 except Exception as e:
     print(e)
 
-
+am_temp_inp = "SPole_annual_50.amc"  # default am template file
 
 for sAz_slow_FN in sAz_slow_FNs:
-    slow2Dat(path = path_save, scanAz_slow_filename = sAz_slow_FN)
+    slow2Dat(path = path_save, scanAz_slow_filename = sAz_slow_FN, am_temp = am_temp_inp)
 
 def sum_time_take():
     """
