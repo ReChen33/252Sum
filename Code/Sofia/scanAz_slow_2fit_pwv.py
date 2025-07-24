@@ -1,7 +1,7 @@
 """
 25/07/17
 
-Ver 4.5
+Ver 4.5.1
     add more comments
 
 Yifu
@@ -27,37 +27,44 @@ class slow2FitPWV:
     A class to handle the slow scan Azimuth data and the fit PWV values using am fits.  
 
     How this class works:
-        1. Initialize the class
-        2. run method
-            2.1 clean the old csv files bc we going to create new ones
-            2.2 if get_slow_FNs_glob is True, get the slow scan azimuth filenames by glob package
-            2.3 for each filename call the slow2Dat method
-        3. slow2Dat method
-            3.1 if {path_save} not None join the path to inputs FNs
-            3.2 use {out_dict} to save the data read from the file
-            3.3 call timeTake method to save the time taken to read the file
-            3.4 for each TIME key in {out_dict}, create a dat file
-                3.4.1 call peakOut method to find the extreme peak in the values
-            3.5 call dat2Am method to create am files based on the dat file
-            3.6 call remove_old_files method to remove old am files to save space
-            3.7 The if-break of num4Time only for testing
-        4. dat2Am method
-            4.1 call am command to create am files based on the dat file (os.system)
-            4.2 rewrite the {time} to remove the folders' name
-            4.3 call read_am method to write to time_pwv.csv file based on the amc file
-        5. read_am methods
-            5.1 read the *.dat.amc files and write to time_pwv.csv file
-        
+        0. Initialize the class
+        1. run method
+            1.1 clean the old csv files bc we going to create new ones
+            1.2 if get_slow_FNs_glob is True, get the slow scan azimuth filenames by glob package
+            1.3 for each filename call the slow2Dat method
+        2. slow2Dat method
+            2.1 if {path_save} not None join the path to inputs FNs
+            2.2 use {out_dict} to save the data read from the file
+            2.3 call timeTake method to save the time taken to read the file
+            2.4 for each TIME key in {out_dict}, create a dat file
+                2.4.1 call peakOut method to find the extreme peak in the values
+            2.5 call dat2Am method to create am files based on the dat file
+            2.6 call remove_old_files method to remove old am files to save space
+            2.7 The if-break of num4Time only for testing
+        3. dat2Am method
+            3.1 call am command to create am files based on the dat file (os.system)
+            3.2 rewrite the {time} to remove the folders' name
+            3.3 call read_am method to write to time_pwv.csv file based on the amc file
+        4. read_am methods
+            4.1 read the *.dat.amc files
+            4.2 save to time_pwv.csv file
+
     Necessary methods:
-        step 1: slow2Dat: read the *_scanAz_slow.txt file and write a dat file
-        step 2: dat2Am: use the am fits to create amc;ams;amr files based on the dat file
-        step 3: read_am: read the *.dat.amc files and write to time_pwv.csv file
+        step 0: __init__: initialize the class with default values
+        step 1: run: main function to run the process
+        step 2: slow2Dat: read the *_scanAz_slow.txt file and write a dat file
+        step 3: dat2Am: use the am fits to create amc;ams;amr files based on the dat file
+        step 4: read_am: read the *.dat.amc files and write to time_pwv.csv file
 
     Math methods:
         timeTake: save the time taken for each event into the time_take.csv file
         sum_time_take: sum the time taken for each time_event in the time_take.csv file
         peakOut: find the extreme peak(more than 50%) in a list of numbers, and remove it to give a new average number.
 
+    Helpful methods:
+        cleanCSV: remove old csv files
+        getsAzSlowFilenames: get the list of slow scan azimuth filenames by glob
+    
     Not necessary methods:
         remove_old_files: remove am files for saving space
         
