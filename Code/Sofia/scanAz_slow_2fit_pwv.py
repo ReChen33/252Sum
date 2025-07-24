@@ -1,9 +1,8 @@
 """
 25/07/17
 
-Ver 4.2
-    add init
-    add time_take function
+Ver 4.5
+    add more comments
 
 Yifu
 
@@ -27,6 +26,28 @@ class slow2FitPWV:
     """
     A class to handle the slow scan Azimuth data and the fit PWV values using am fits.  
 
+    How this class works:
+        1. Initialize the class
+        2. run method
+            2.1 clean the old csv files bc we going to create new ones
+            2.2 if get_slow_FNs_glob is True, get the slow scan azimuth filenames by glob package
+            2.3 for each filename call the slow2Dat method
+        3. slow2Dat method
+            3.1 if {path_save} not None join the path to inputs FNs
+            3.2 use {out_dict} to save the data read from the file
+            3.3 call timeTake method to save the time taken to read the file
+            3.4 for each TIME key in {out_dict}, create a dat file
+                3.4.1 call peakOut method to find the extreme peak in the values
+            3.5 call dat2Am method to create am files based on the dat file
+            3.6 call remove_old_files method to remove old am files to save space
+            3.7 The if-break of num4Time only for testing
+        4. dat2Am method
+            4.1 call am command to create am files based on the dat file (os.system)
+            4.2 rewrite the {time} to remove the folders' name
+            4.3 call read_am method to write to time_pwv.csv file based on the amc file
+        5. read_am methods
+            5.1 read the *.dat.amc files and write to time_pwv.csv file
+        
     Necessary methods:
         step 1: slow2Dat: read the *_scanAz_slow.txt file and write a dat file
         step 2: dat2Am: use the am fits to create amc;ams;amr files based on the dat file
@@ -50,7 +71,7 @@ class slow2FitPWV:
             self.num2Process: int, the number of TIME keys to process at a time
             self.path_save: str, the path to save the results
             self.sAz_slow_FNs: list, the list of slow scan azimuth filenames
-            self.get_sAz_slow_FNs: bool, whether to get the slow scan azimuth filenames
+            self.get_sAz_slow_FNs: bool, whether to get the slow scan azimuth filenames by glob
             self.am_temp: str, the am fit template file
             self.time_take_file: str, the file to save the time taken for each TIME
             self.date_pwv_file: str, the file to save the date and PWV values
@@ -62,7 +83,7 @@ class slow2FitPWV:
         self.get_slow_FNs_glob = True # whether to get the scan azimuth slow filenames by the function using glob
         self.am_temp = "SPole_annual_50.amc"
         self.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
-        self.date_pwv_file = 'date_pwv.csv'  # file to save the date and PWV values
+        self.date_pwv_file = 'time_pwv.csv'  # file to save the date and PWV values
 
 
     def remove_old_files(self,path_save = "results/"):
@@ -293,28 +314,37 @@ class slow2FitPWV:
     def slow2Dat(self, path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.txt", am_temp = "SPole_annual_50.amc"):
         """
         purpose:
-        read the *_scanAz_slow.txt file and write a dat file
+            read the *_scanAz_slow.txt file and write a dat file
 
         file format:
-        from *_scanAz_slow.txt we need: TIME(0); TSRC0(19); TSRC1(20); TSRC2(21); TSRC3(22); EL(23); AZ(24)
-        into dat:(for each col. which means diff channel) fre; bandwith; Temp
+            from *_scanAz_slow.txt we need: TIME(0); TSRC0(19); TSRC1(20); TSRC2(21); TSRC3(22); EL(23); AZ(24)
+            into dat:(for each col. which means diff channel) fre; bandwith; Temp
 
         input:
             scanAz_slow_filename: str, the filename of the scanAz_slow file, 
-                default is "20250101_010135_scanAz_slow.txt"
+                                default is "20250101_010135_scanAz_slow.txt"
+            am_temp: str, the am fit template file, default is "SPole_annual_50.amc"
+
 
         """
         read_time_start = perf_counter()  # start the timer for reading the file
 
         if path is not None:
+            #join the path and filename
             scanAz_slow_filename = os.path.join(path, scanAz_slow_filename)
 
         am_temp_4dat = am_temp #used in loop to function dat2Am
+
         if path is not None:
             am_temp_4dat = os.path.join(path, am_temp_4dat)
 
         #use a Dict to save the data
-        #Dict = ["TIME":["TSRC0":value, "TSRC1":value, "TSRC2":value, "TSRC3":value, "EL":value, "AZ":value]]
+        """out_dict = 
+            ["TIME":
+               ["TSRC0":[value list], "TSRC1":[value list], "TSRC2":[value list], 
+               "TSRC3":[value list], "EL":[value list], "AZ":[value list]]
+           ]
+        """
         out_dict: Dict[str, Dict[str,float]] = {}
 
         #read the scanAz_slow file
@@ -415,6 +445,11 @@ class slow2FitPWV:
             if os.path.exists(dat_filename):
                 os.remove(dat_filename)
 
+            """
+            dat file format:
+            1.25 1.50 T0 --> 1.25GHz away from 183.3GHz(from the fit amc files "ifspec dsb 183.3 GHz"),
+                         --> 1.50GHz bandwidth, T0 is the average value of TSRC0
+            """
             with open(dat_filename,'w+') as f:
                 #print('writing on '+ dat_filename)
                 f.write('1.25 1.50 {0}\n'.format(T0))
@@ -463,7 +498,7 @@ class slow2FitPWV:
             os.remove(date_pwv_file)
             print("Old csv files removed.")
         except Exception as e:
-            print(e)
+            print("No old csv files to remove.")
 
     def getsAzSlowFilenames(self):
         """
