@@ -1,8 +1,8 @@
 """
 25/07/17
 
-Ver 4.5.1
-    add more comments
+Ver 4.6
+    rewrite the sum_time_take func to less lines
 
 Yifu
 
@@ -560,24 +560,27 @@ class slow2FitPWV:
 
         total_time = 0
 
-        with open(time_take_file, 'r') as t:
+        with open(time_take_file, 'r+') as t:
             next(t)  # skip header
+            total_time = 0.0
             for line in t:
                 parts = line.split(',')
                 if len(parts) == 2:
                     total_time += float(parts[1])
-        t.close()
-
-        with open(time_take_file, 'a') as t:
+            
+            # Move to end of file to append
             t.write(f"\nTotal time taken: {total_time:.4f} seconds\n")
-        t.close()
+        t.close()  
 
         print(f"Total time taken: {total_time:.4f} seconds")
 
     #sum_time_take()  # sum the time 
 
 if __name__ == "__main__":
+    #How to use
     doFit = slow2FitPWV()
+    doFit.num2Process = 640  # set the number of TIME keys to process at a time
+    doFit.path_save = "results/" 
     doFit.date_pwv_file = 'time_pwv.csv'  # file to save the date and PWV values
     doFit.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
     doFit.am_temp = "SPole_annual_50.amc"  # am fit template file
