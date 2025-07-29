@@ -1,0 +1,22 @@
+2025-01-01T02:01:35.278006 create new wvrAzEl object for scanAz
+2025-01-01T02:01:35.278929 Closing az/el socket ip 192.168.168.233 
+2025-01-01T02:01:35.279077 192.168.168.233 socket ip is already closed
+2025-01-01T02:01:35.279168 Opening az/el socket ip 192.168.168.233 
+2025-01-01T02:01:35.285653 Create new wvrDaq object for scanAz
+2025-01-01T02:01:35.286338 create PIDTemps object
+2025-01-01T02:01:35.286826 start PIDtemps acquisition in the background
+2025-01-01T02:01:35.287553 Recording PIDTemps in file: /home/dbarkats/wvr_data/20250101_020135_scanAz_PIDTemps.txt
+2025-01-01T02:01:36.288740 start az rotation.
+2025-01-01T02:01:36.288935 Doing 110 turns, 39600 deg at 12deg/s: 3300 seconds
+2025-01-01T02:01:36.289129 Computer commanded Arduino to move az to 528000 steps
+2025-01-01T02:01:36.289223 start wvr data acquisition in the foreground
+2025-01-01T02:01:36.289310 Recording data for 3300 seconds 
+
+2025-01-01T02:01:36.289508 Recording WVR data in file: /home/dbarkats/wvr_data/20250101_020135_scanAz_stat.txt 
+2025-01-01T02:01:36.315831 Recording WVR data in file: /home/dbarkats/wvr_data/20250101_020135_scanAz_fast.txt 
+2025-01-01T02:01:36.316172 Recording WVR data in file: /home/dbarkats/wvr_data/20250101_020135_scanAz_slow.txt 
+2025-01-01T02:01:36.545761 [WARNING] Dropped data
+2025-01-01T02:56:36.438429 68749 fast samples, 3438 slow samples 
+
+2025-01-01T02:56:36.438749 end of wvr data acquisition in the foreground
+2025-01-01T02:56:36.438860 Closing az/el socket ip 192.168.168.233 

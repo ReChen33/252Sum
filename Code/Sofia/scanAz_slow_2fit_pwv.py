@@ -1,8 +1,8 @@
 """
 25/07/17
 
-Ver 4.6
-    rewrite the sum_time_take func to less lines
+Ver 5.0
+    send to yifu@quasar
 
 Yifu
 
@@ -91,6 +91,7 @@ class slow2FitPWV:
         self.am_temp = "SPole_annual_50.amc"
         self.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
         self.date_pwv_file = 'time_pwv.csv'  # file to save the date and PWV values
+        self.percentage = 0.3  # percentage to find the extreme peak, default is 30%
 
 
     def remove_old_files(self,path_save = "results/"):
@@ -101,7 +102,7 @@ class slow2FitPWV:
         
         try:
             for file in glob.glob(f'{path_save}*.dat'):
-                #print(f"Not Removing File: {file}")
+                #print(f"Removing File: {file}")
                 os.remove(file)
             for file in glob.glob(f'{path_save}*.dat.amc'):
                 #print(f"Not Removing File: {file}")
@@ -238,6 +239,14 @@ class slow2FitPWV:
             None, 
             but creates {dat_filename}.amc; {dat_filename}.ams; {dat_filename}.amr files
         """
+        
+        #When os is Linux need change *_inp name format
+        if os.name == 'posix':
+            if "\\" in am_temp_inp:
+                am_temp_inp = am_temp_inp.replace('\\', '/')
+            if "\\" in dat_fn_inp:
+                dat_fn_inp = dat_fn_inp.replace('\\', '/')
+            
 
         os.system(f"am {am_temp_inp} {zen_ang} {dat_fn_inp}")
         #print(f"{dat_fn_inp} created using {am_temp_inp} at zenith angle {zen_ang} degrees.")
@@ -253,18 +262,18 @@ class slow2FitPWV:
         time = dat_fn_inp
         if path is not None:
             # {time} except: "~/results/20250101S010147.191706E010156.795119_scanAz_slow.dat"
-            time = time.split('/')[-1] 
+            time = os.path.basename(time)  # get the filename only
         time = time.split('_')[0]  
 
         # read the amc file and write to time_pwv.csv    
         self.read_am(all_lines_variable, time, zen_ang)  
 
 
-    def peakOut(self, numbers, percentage=0.5):
+    def peakOut(self, numbers, percentage=0.3):
         
         """
         Purpose: 
-            Find the extreme peak(more than 50%) in a list of numbers, and remove it to give a new average number.
+            Find the extreme peak(more than {percentage}) in a list of numbers, and remove it to give a new average number.
 
         input:
             A list of numbers.
@@ -437,7 +446,8 @@ class slow2FitPWV:
                 T3 += obs_values["TSRC3"][i]
                 EL += obs_values["EL"][i]
                 #AZ += obs_values["AZ"][i]
-            
+
+            percentage = self.percentage  # percentage to find the extreme peak, default is 30%
             #average the values by peakOut function
             T0 = self.peakOut(obs_values["TSRC0"])
             T1 = self.peakOut(obs_values["TSRC1"])
@@ -520,7 +530,7 @@ class slow2FitPWV:
         try:
             # get all *_scanAz_slow.txt files in the current directory
             for file in glob.glob(f'{path_save}*_scanAz_slow.txt'):
-                file = file.split('\\')[-1]  # get the filename only
+                file = os.path.basename(file)  # get the filename only
                 #print(f"Processing file: {file}")
                 sAz_slow_FNs.append(file)
         except Exception as e:
@@ -546,9 +556,12 @@ class slow2FitPWV:
 
         am_temp_inp = self.am_temp  # default am template file
 
+        num4sAzFN = 0
         for sAz_slow_FN in sAz_slow_FNs:
-            
+            num4sAzFN += 1  # count the number of slow scan azimuth files processed            
             self.slow2Dat(path = path_save, scanAz_slow_filename = sAz_slow_FN, am_temp = am_temp_inp)
+            #show number of time sAz_slow_FN processed
+            print(f"Processed: {num4sAzFN} in {len(sAz_slow_FNs)} slow scan azimuth files.")
 
     def sum_time_take(self):
         """
@@ -580,8 +593,9 @@ if __name__ == "__main__":
     #How to use
     doFit = slow2FitPWV()
     doFit.num2Process = 640  # set the number of TIME keys to process at a time
+    doFit.percentage = 0.1  # set the percentage to find the extreme peak, default is 30%
     doFit.path_save = "results/" 
-    doFit.date_pwv_file = 'time_pwv.csv'  # file to save the date and PWV values
+    doFit.date_pwv_file = f'time_pwv_p{doFit.percentage}.csv'  # file to save the date and PWV values
     doFit.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
     doFit.am_temp = "SPole_annual_50.amc"  # am fit template file
     doFit.run()  # run the main function
