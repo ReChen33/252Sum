@@ -35,11 +35,14 @@
 fit Trj %2
 fit_data_columns 1 3 2 0
 fit_data_units GHz K
-fit_verbose 1
+fit_verbose 0  # turns off verbose output
+#fit_output config 0    # turns off writing of stdin.amc
+fit_output spectrum 0  # turns off writing of stdin.ams
+fit_output residual 0  # turns off writing of stdin.amr
 
 f 170 GHz 195 GHz 2.0 MHz
 ifspec dsb 183.3 GHz
-fif 0 GHz  20 GHz
+fif 0 GHz  10 GHz
 output f GHz  tau  Trj K
 za %1 deg
 tol 1e-4

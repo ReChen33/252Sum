@@ -1,8 +1,9 @@
 """
 25/07/17
 
-Ver 5.0
-    send to yifu@quasar
+Ver 5.1
+    import py2csv
+
 
 Yifu
 
@@ -21,6 +22,7 @@ from datetime import datetime
 import glob
 from time import sleep
 import statistics as stats
+from py2csv import timeTake, cleanCSV, sum_time_take
 
 class slow2FitPWV:
     """
@@ -57,12 +59,11 @@ class slow2FitPWV:
         step 4: read_am: read the *.dat.amc files and write to time_pwv.csv file
 
     Math methods:
-        timeTake: save the time taken for each event into the time_take.csv file
-        sum_time_take: sum the time taken for each time_event in the time_take.csv file
+        
         peakOut: find the extreme peak(more than 50%) in a list of numbers, and remove it to give a new average number.
 
     Helpful methods:
-        cleanCSV: remove old csv files
+        
         getsAzSlowFilenames: get the list of slow scan azimuth filenames by glob
     
     Not necessary methods:
@@ -102,16 +103,16 @@ class slow2FitPWV:
         
         try:
             for file in glob.glob(f'{path_save}*.dat'):
-                #print(f"Removing File: {file}")
+                print(f"Removing File: {file}")
                 os.remove(file)
             for file in glob.glob(f'{path_save}*.dat.amc'):
-                #print(f"Not Removing File: {file}")
+                print(f"Removing File: {file}")
                 os.remove(file)
             for file in glob.glob(f'{path_save}*.dat.ams'):
-                #print(f"Not Removing File: {file}")
+                print(f"Removing File: {file}")
                 os.remove(file)
             for file in glob.glob(f'{path_save}*.dat.amr'):
-                #print(f"Not Removing File: {file}")
+                print(f"Removing File: {file}")
                 os.remove(file)
 
         except Exception as e:
@@ -301,32 +302,6 @@ class slow2FitPWV:
         aver = np.average(new_numbers)
         return aver
 
-    def timeTake(self, time_event_name, time_taken:float):
-        """
-        purpose:
-            save the time taken for each event into the time_take.csv file
-
-        input:
-            time_event_name: str, the name of the time event
-            time_taken: float, the time taken for the event
-
-        output:
-            None
-        But creates or appends to the time_take.csv file
-        """
-
-        time_take_FN = self.time_take_file
-
-        if not os.path.exists(time_take_FN):
-            with open(time_take_FN, 'w') as t:
-                t.write("TIME,take TIME (seconds)\n")
-                t.write(f"{time_event_name},{time_taken:.4f}\n")
-            t.close()
-        else:
-            with open(time_take_FN, 'a') as t:
-                t.write(f"{time_event_name},{time_taken:.4f}\n")
-            t.close()
-
     def slow2Dat(self, path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.txt", am_temp = "SPole_annual_50.amc"):
         """
         purpose:
@@ -389,7 +364,11 @@ class slow2FitPWV:
         time_taken = read_time_end - read_time_start  # calculate the time taken to read the file
         
         # save the time taken to the file
-        self.timeTake(f"read {scanAz_slow_filename}", time_taken)  
+        timeTake(
+            time_event_name=f"read {scanAz_slow_filename}",
+            time_taken=time_taken,
+            time_take_file=self.time_take_file
+        )
 
         #print(out_dict)  # print the dictionary to check the data    
         print(len(out_dict.keys()), "TIME keys found in the dictionary.")
@@ -491,7 +470,11 @@ class slow2FitPWV:
             time_taken = end - start  # calculate the time taken to process the file
 
             #save the time taken to csv file        
-            self.timeTake(time_name, time_taken)
+            timeTake(
+                time_event_name=dat_filename,
+                time_taken=time_taken,
+                time_take_file=self.time_take_file
+            )   
 
             num4Time += 1
 
@@ -501,21 +484,6 @@ class slow2FitPWV:
                 continue
                 #break  # for testing, remove this line to process all times
     
-    def cleanCSV(self):
-        """
-        purpose:
-            This function removes old CSV files.
-        """
-
-        time_take_file = self.time_take_file
-        date_pwv_file = self.date_pwv_file
-
-        try:
-            os.remove(time_take_file)
-            os.remove(date_pwv_file)
-            print("Old csv files removed.")
-        except Exception as e:
-            print("No old csv files to remove.")
 
     def getsAzSlowFilenames(self):
         """
@@ -543,8 +511,8 @@ class slow2FitPWV:
         purpose:
             The run func 
         """
-
-        self.cleanCSV()  # clean old csv files
+        if os.path.exists(self.date_pwv_file):
+            cleanCSV(date_pwv_file=self.date_pwv_file)  # clean the old csv files
 
         path_save = self.path_save  # path to save the results
 
@@ -563,31 +531,8 @@ class slow2FitPWV:
             #show number of time sAz_slow_FN processed
             print(f"Processed: {num4sAzFN} in {len(sAz_slow_FNs)} slow scan azimuth files.")
 
-    def sum_time_take(self):
-        """
-        purpose:
-            sum the time taken for each TIME in the time_take.csv file
-        """
 
-        time_take_file = self.time_take_file
 
-        total_time = 0
-
-        with open(time_take_file, 'r+') as t:
-            next(t)  # skip header
-            total_time = 0.0
-            for line in t:
-                parts = line.split(',')
-                if len(parts) == 2:
-                    total_time += float(parts[1])
-            
-            # Move to end of file to append
-            t.write(f"\nTotal time taken: {total_time:.4f} seconds\n")
-        t.close()  
-
-        print(f"Total time taken: {total_time:.4f} seconds")
-
-    #sum_time_take()  # sum the time 
 
 if __name__ == "__main__":
     #How to use
@@ -598,6 +543,8 @@ if __name__ == "__main__":
     doFit.date_pwv_file = f'time_pwv_p{doFit.percentage}.csv'  # file to save the date and PWV values
     doFit.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
     doFit.am_temp = "SPole_annual_50.amc"  # am fit template file
+    doFit.get_slow_FNs_glob = False
+    doFit.sAz_slow_FNs = ["20250101_010135_scanAz_slow.txt"]  # list of slow scan azimuth filenames
     doFit.run()  # run the main function
-    doFit.sum_time_take()  # sum the time taken for each dat file
+    sum_time_take(doFit.time_take_file)  # sum the time taken for each TIME in the time_take.csv file
     #print("All done.")
