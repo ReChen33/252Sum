@@ -1,0 +1,9 @@
+TIME,take TIME (seconds)
+unzip 20250102.tar.gz,1.1780
+delete_unneeded_files,0.0302
+unzip 202501022.tar.gz,1.3528
+delete_unneeded_files,0.0327
+unzip 20250131.zip,0.0769
+delete_unneeded_files,0.0057
+
+Total time taken: 2.6763 seconds

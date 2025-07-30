@@ -1,8 +1,8 @@
 """
 25/07/17
 
-Ver 5.1
-    import py2csv
+Ver 5.2
+    add "sAz_slow_FNs.sort()" for let sAz_slow_FNs in the order of the time
 
 
 Yifu
@@ -103,16 +103,16 @@ class slow2FitPWV:
         
         try:
             for file in glob.glob(f'{path_save}*.dat'):
-                print(f"Removing File: {file}")
+                #print(f"Removing File: {file}")
                 os.remove(file)
             for file in glob.glob(f'{path_save}*.dat.amc'):
-                print(f"Removing File: {file}")
+                #print(f"Removing File: {file}")
                 os.remove(file)
             for file in glob.glob(f'{path_save}*.dat.ams'):
-                print(f"Removing File: {file}")
+                #print(f"Removing File: {file}")
                 os.remove(file)
             for file in glob.glob(f'{path_save}*.dat.amr'):
-                print(f"Removing File: {file}")
+                #print(f"Removing File: {file}")
                 os.remove(file)
 
         except Exception as e:
@@ -476,12 +476,12 @@ class slow2FitPWV:
                 time_take_file=self.time_take_file
             )   
 
-            num4Time += 1
+            #num4Time += 1
 
-            print(f"num of {num4Time} dat files done")
+            #print(f"num of {num4Time} dat files done")
 
-            if num4Time >= 1:
-                continue
+            #if num4Time >= 1:
+                #continue
                 #break  # for testing, remove this line to process all times
     
 
@@ -522,6 +522,10 @@ class slow2FitPWV:
         else:
             sAz_slow_FNs = self.sAz_slow_FNs
 
+        #let sAz_slow_FNs in the order of the time
+        sAz_slow_FNs.sort()
+        #print(sAz_slow_FNs)
+
         am_temp_inp = self.am_temp  # default am template file
 
         num4sAzFN = 0
@@ -529,7 +533,7 @@ class slow2FitPWV:
             num4sAzFN += 1  # count the number of slow scan azimuth files processed            
             self.slow2Dat(path = path_save, scanAz_slow_filename = sAz_slow_FN, am_temp = am_temp_inp)
             #show number of time sAz_slow_FN processed
-            print(f"Processed: {num4sAzFN} in {len(sAz_slow_FNs)} slow scan azimuth files.")
+            print(f"Processed: {sAz_slow_FN} \n{num4sAzFN} in {len(sAz_slow_FNs)} slow scan azimuth files.")
 
 
 
@@ -545,6 +549,7 @@ if __name__ == "__main__":
     doFit.am_temp = "SPole_annual_50.amc"  # am fit template file
     doFit.get_slow_FNs_glob = False
     doFit.sAz_slow_FNs = ["20250101_010135_scanAz_slow.txt"]  # list of slow scan azimuth filenames
+    cleanCSV(time_take_file=doFit.time_take_file, date_pwv_file=doFit.date_pwv_file)  # clean old csv files
     doFit.run()  # run the main function
     sum_time_take(doFit.time_take_file)  # sum the time taken for each TIME in the time_take.csv file
     #print("All done.")
