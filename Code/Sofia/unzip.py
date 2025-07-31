@@ -32,6 +32,7 @@ class unzipFiles:
         self.zip_files = []  # List to store zip files if needed
         self.am_temp = "SPole_annual_50.amc"  # AM fit template file
         self.time_take_file = "time_take.csv"
+        self.delete_FN = True  # Flag to control deletion of unneeded files
 
     def unzip_tar_gz(self, filename):
         if filename.endswith('.tar.gz'):
@@ -77,6 +78,8 @@ class unzipFiles:
                               or f.endswith('.zip')]
             if len(self.zip_files) == 0:
                 return "No zip files to unzip."
+            
+        self.zip_files.sort()  # Sort the zip files for consistent processing
 
         for zip_file in self.zip_files:
             time_start = perf_counter()  # Start timing
@@ -97,8 +100,17 @@ class unzipFiles:
                 time_take_file=time_take_FN
             )
 
-            self.delete_unneeded_files()  # Call to delete unneeded files after unzipping
-    
+            if self.delete_FN:
+                #print("Deleting unneeded files...")
+                self.delete_unneeded_files()  # Call to delete unneeded files after unzipping
+            else:
+                timeTake(
+                    time_event_name="not_delete_unneeded_files",
+                    time_taken=0,
+                    time_take_file=self.time_take_file
+                )
+
+
     def delete_unneeded_files(self):
         """
         use glob to find the files that are needed and delete the rest created files

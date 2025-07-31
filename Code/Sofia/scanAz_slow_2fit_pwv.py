@@ -248,14 +248,31 @@ class slow2FitPWV:
             if "\\" in dat_fn_inp:
                 dat_fn_inp = dat_fn_inp.replace('\\', '/')
             
-
-        os.system(f"am {am_temp_inp} {zen_ang} {dat_fn_inp}")
         #print(f"{dat_fn_inp} created using {am_temp_inp} at zenith angle {zen_ang} degrees.")
+        try:
+            os.system(f"am {am_temp_inp} {zen_ang} {dat_fn_inp}")        
+        except Exception as e:
+            #print(f"Error in am command: {e}")
+            timeTake(
+                time_event_name=f"am command failed {am_temp_inp} {zen_ang} {dat_fn_inp} {e}",
+                time_taken=0,
+                time_take_file=self.time_take_file
+            )
 
         sleep(0.001) #wait in case the system is slow
 
-        #read the PWV from the new amc
-        file_variable = open(dat_fn_inp+'.amc')
+        try:
+            #read the PWV from the new amc
+            file_variable = open(dat_fn_inp+'.amc')
+        except FileNotFoundError:
+            #print(f"File not found: {dat_fn_inp+'.amc'}")
+            timeTake(
+                time_event_name=f"read amc file failed {dat_fn_inp}",
+                time_taken=0,
+                time_take_file=self.time_take_file
+            )
+            return
+
         all_lines_variable = file_variable.readlines()
         file_variable.close()
 
@@ -268,6 +285,9 @@ class slow2FitPWV:
 
         # read the amc file and write to time_pwv.csv    
         self.read_am(all_lines_variable, time, zen_ang)  
+
+    
+        return
 
 
     def peakOut(self, numbers, percentage=0.3):

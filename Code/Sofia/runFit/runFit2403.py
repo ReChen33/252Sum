@@ -6,7 +6,7 @@ import unzip
 import scanAz_slow_2fit_pwv as scanAz
 import py2csv
 
-yymm = 2401  # file containing the month values
+yymm = 2403  # file containing the month values
 
 date_pwv_FN = f"time_pwv_{yymm}.csv"  # file to save the date and PWV values
 #time_take_FN = "time_take.csv"  # file to save the time taken for each TIME

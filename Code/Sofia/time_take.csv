@@ -1,10 +1,2 @@
 TIME,take TIME (seconds)
-read results/20250101_010135_scanAz_slow.txt,0.0193
-results/20250101S010136.531267E011150.083026_scanAz_slow.dat,0.5785
-results/20250101S011151.039968E012204.487716_scanAz_slow.dat,0.5421
-results/20250101S012205.451016E013218.897595_scanAz_slow.dat,0.5149
-results/20250101S013219.860375E014233.307726_scanAz_slow.dat,0.5216
-results/20250101S014234.266722E015247.715389_scanAz_slow.dat,0.5102
-results/20250101S015248.672981E015636.196302_scanAz_slow.dat,0.5544
-
-Total time taken: 3.2410 seconds
+read results/20250101_010135_scanAz_slow.txt,0.0422
