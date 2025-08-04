@@ -1,0 +1,787 @@
+TIME,take TIME (seconds)
+unzip 20240101.tar.gz,0.0012
+delete_unneeded_files,0.1928
+unzip 20240102.tar.gz,0.0012
+delete_unneeded_files,0.1582
+unzip 20240103.tar.gz,0.6791
+delete_unneeded_files,0.1998
+unzip 20240104.tar.gz,0.6749
+delete_unneeded_files,0.2016
+unzip 20240105.tar.gz,0.6749
+delete_unneeded_files,0.2018
+unzip 20240106.tar.gz,0.6738
+delete_unneeded_files,0.2024
+unzip 20240107.tar.gz,0.6732
+delete_unneeded_files,0.2031
+unzip 20240108.tar.gz,0.6736
+delete_unneeded_files,0.2030
+unzip 20240109.tar.gz,0.6741
+delete_unneeded_files,0.2039
+unzip 20240110.tar.gz,0.6746
+delete_unneeded_files,0.2041
+unzip 20240111.tar.gz,0.6740
+delete_unneeded_files,0.2049
+unzip 20240112.tar.gz,0.6751
+delete_unneeded_files,0.2052
+unzip 20240113.tar.gz,0.6770
+delete_unneeded_files,0.2057
+unzip 20240114.tar.gz,0.6763
+delete_unneeded_files,0.2058
+unzip 20240115.tar.gz,0.6727
+delete_unneeded_files,0.2055
+unzip 20240116.tar.gz,0.6757
+delete_unneeded_files,0.2053
+unzip 20240117.tar.gz,0.6700
+delete_unneeded_files,0.2050
+unzip 20240118.tar.gz,0.6723
+delete_unneeded_files,0.2059
+unzip 20240119.tar.gz,0.6752
+delete_unneeded_files,0.2060
+unzip 20240120.tar.gz,0.6744
+delete_unneeded_files,0.2062
+unzip 20240121.tar.gz,0.6752
+delete_unneeded_files,0.2062
+unzip 20240122.tar.gz,0.6734
+delete_unneeded_files,0.2064
+unzip 20240123.tar.gz,0.6767
+delete_unneeded_files,0.2068
+unzip 20240124.tar.gz,0.6749
+delete_unneeded_files,0.2069
+unzip 20240125.tar.gz,0.6766
+delete_unneeded_files,0.2063
+unzip 20240126.tar.gz,0.6765
+delete_unneeded_files,0.2073
+unzip 20240127.tar.gz,0.6750
+delete_unneeded_files,0.2067
+unzip 20240128.tar.gz,0.6758
+delete_unneeded_files,0.2075
+unzip 20240129.tar.gz,0.6778
+delete_unneeded_files,0.2082
+unzip 20240130.tar.gz,0.6764
+delete_unneeded_files,0.2081
+unzip 20240131.tar.gz,0.6751
+delete_unneeded_files,0.2073
+unzip 20240201.tar.gz,0.6774
+delete_unneeded_files,0.2072
+unzip 20240202.tar.gz,0.6787
+delete_unneeded_files,0.2076
+unzip 20240203.tar.gz,0.6788
+delete_unneeded_files,0.2076
+unzip 20240204.tar.gz,0.6762
+delete_unneeded_files,0.2081
+unzip 20240205.tar.gz,0.6764
+delete_unneeded_files,0.2081
+unzip 20240206.tar.gz,0.6778
+delete_unneeded_files,0.2088
+unzip 20240207.tar.gz,0.6779
+delete_unneeded_files,0.2088
+unzip 20240208.tar.gz,0.6815
+delete_unneeded_files,0.2087
+unzip 20240209.tar.gz,0.6770
+delete_unneeded_files,0.2078
+unzip 20240210.tar.gz,0.6779
+delete_unneeded_files,0.2079
+unzip 20240211.tar.gz,0.6774
+delete_unneeded_files,0.2078
+unzip 20240212.tar.gz,0.6787
+delete_unneeded_files,0.2085
+unzip 20240213.tar.gz,0.6785
+delete_unneeded_files,0.2080
+unzip 20240214.tar.gz,0.6807
+delete_unneeded_files,0.2086
+unzip 20240215.tar.gz,0.6779
+delete_unneeded_files,0.2112
+unzip 20240216.tar.gz,0.6789
+delete_unneeded_files,0.2079
+unzip 20240217.tar.gz,0.6759
+delete_unneeded_files,0.2079
+unzip 20240218.tar.gz,0.6766
+delete_unneeded_files,0.2076
+unzip 20240219.tar.gz,0.6757
+delete_unneeded_files,0.2080
+unzip 20240220.tar.gz,0.6771
+delete_unneeded_files,0.2076
+unzip 20240221.tar.gz,0.6763
+delete_unneeded_files,0.2074
+unzip 20240222.tar.gz,0.6794
+delete_unneeded_files,0.2079
+unzip 20240223.tar.gz,0.6778
+delete_unneeded_files,0.2086
+unzip 20240224.tar.gz,0.6764
+delete_unneeded_files,0.2082
+unzip 20240225.tar.gz,0.6763
+delete_unneeded_files,0.2077
+unzip 20240226.tar.gz,0.6764
+delete_unneeded_files,0.2079
+unzip 20240227.tar.gz,0.6773
+delete_unneeded_files,0.2087
+unzip 20240228.tar.gz,0.6776
+delete_unneeded_files,0.2083
+unzip 20240229.tar.gz,0.6755
+delete_unneeded_files,0.2086
+unzip 20240301.tar.gz,0.6765
+delete_unneeded_files,0.2079
+unzip 20240302.tar.gz,0.6764
+delete_unneeded_files,0.2081
+unzip 20240303.tar.gz,0.6766
+delete_unneeded_files,0.2087
+unzip 20240304.tar.gz,0.6787
+delete_unneeded_files,0.2091
+unzip 20240305.tar.gz,0.6785
+delete_unneeded_files,0.2087
+unzip 20240306.tar.gz,0.6757
+delete_unneeded_files,0.2084
+unzip 20240307.tar.gz,0.6763
+delete_unneeded_files,0.2099
+unzip 20240308.tar.gz,0.6742
+delete_unneeded_files,0.2103
+unzip 20240309.tar.gz,0.6755
+delete_unneeded_files,0.2106
+unzip 20240310.tar.gz,0.6768
+delete_unneeded_files,0.2094
+unzip 20240311.tar.gz,0.6752
+delete_unneeded_files,0.2098
+unzip 20240312.tar.gz,0.6751
+delete_unneeded_files,0.2110
+unzip 20240313.tar.gz,0.6776
+delete_unneeded_files,0.2102
+unzip 20240314.tar.gz,0.6772
+delete_unneeded_files,0.2093
+unzip 20240315.tar.gz,0.6766
+delete_unneeded_files,0.2086
+unzip 20240316.tar.gz,0.6752
+delete_unneeded_files,0.2142
+unzip 20240317.tar.gz,0.6770
+delete_unneeded_files,0.2077
+unzip 20240318.tar.gz,0.6760
+delete_unneeded_files,0.2072
+unzip 20240319.tar.gz,0.6742
+delete_unneeded_files,0.2075
+unzip 20240320.tar.gz,0.6776
+delete_unneeded_files,0.2075
+unzip 20240321.tar.gz,0.6782
+delete_unneeded_files,0.2069
+unzip 20240322.tar.gz,0.6763
+delete_unneeded_files,0.2074
+unzip 20240323.tar.gz,0.6770
+delete_unneeded_files,0.2074
+unzip 20240324.tar.gz,0.6774
+delete_unneeded_files,0.2073
+unzip 20240325.tar.gz,0.6759
+delete_unneeded_files,0.2077
+unzip 20240326.tar.gz,0.6751
+delete_unneeded_files,0.2081
+unzip 20240327.tar.gz,0.6778
+delete_unneeded_files,0.2077
+unzip 20240328.tar.gz,0.6753
+delete_unneeded_files,0.2083
+unzip 20240329.tar.gz,0.6742
+delete_unneeded_files,0.2086
+unzip 20240330.tar.gz,0.6766
+delete_unneeded_files,0.2081
+unzip 20240331.tar.gz,0.6763
+delete_unneeded_files,0.2083
+unzip 20240401.tar.gz,0.6766
+delete_unneeded_files,0.2097
+unzip 20240402.tar.gz,0.6760
+delete_unneeded_files,0.2085
+unzip 20240403.tar.gz,0.6759
+delete_unneeded_files,0.2080
+unzip 20240404.tar.gz,0.6764
+delete_unneeded_files,0.2074
+unzip 20240405.tar.gz,0.6755
+delete_unneeded_files,0.2075
+unzip 20240406.tar.gz,0.6756
+delete_unneeded_files,0.2083
+unzip 20240407.tar.gz,0.6764
+delete_unneeded_files,0.2078
+unzip 20240408.tar.gz,0.6754
+delete_unneeded_files,0.2078
+unzip 20240409.tar.gz,0.6758
+delete_unneeded_files,0.2099
+unzip 20240410.tar.gz,0.6775
+delete_unneeded_files,0.2102
+unzip 20240411.tar.gz,0.6738
+delete_unneeded_files,0.2060
+unzip 20240412.tar.gz,0.6731
+delete_unneeded_files,0.2067
+unzip 20240413.tar.gz,0.6730
+delete_unneeded_files,0.2061
+unzip 20240414.tar.gz,0.6729
+delete_unneeded_files,0.2066
+unzip 20240415.tar.gz,0.6723
+delete_unneeded_files,0.2066
+unzip 20240416.tar.gz,0.6736
+delete_unneeded_files,0.2070
+unzip 20240417.tar.gz,0.6736
+delete_unneeded_files,0.2070
+unzip 20240418.tar.gz,0.6722
+delete_unneeded_files,0.2085
+unzip 20240419.tar.gz,0.6726
+delete_unneeded_files,0.2066
+unzip 20240420.tar.gz,0.6740
+delete_unneeded_files,0.2077
+unzip 20240421.tar.gz,0.6736
+delete_unneeded_files,0.2073
+unzip 20240422.tar.gz,0.6722
+delete_unneeded_files,0.2072
+unzip 20240423.tar.gz,0.6717
+delete_unneeded_files,0.2073
+unzip 20240424.tar.gz,0.6727
+delete_unneeded_files,0.2077
+unzip 20240425.tar.gz,0.6731
+delete_unneeded_files,0.2072
+unzip 20240426.tar.gz,0.6740
+delete_unneeded_files,0.2073
+unzip 20240427.tar.gz,0.6743
+delete_unneeded_files,0.2068
+unzip 20240428.tar.gz,0.6746
+delete_unneeded_files,0.2076
+unzip 20240429.tar.gz,0.6734
+delete_unneeded_files,0.2071
+unzip 20240430.tar.gz,0.6745
+delete_unneeded_files,0.2073
+unzip 20240501.tar.gz,0.6732
+delete_unneeded_files,0.2063
+unzip 20240502.tar.gz,0.6738
+delete_unneeded_files,0.2089
+unzip 20240503.tar.gz,0.6739
+delete_unneeded_files,0.2061
+unzip 20240504.tar.gz,0.6745
+delete_unneeded_files,0.2082
+unzip 20240505.tar.gz,0.6753
+delete_unneeded_files,0.2092
+unzip 20240506.tar.gz,0.6742
+delete_unneeded_files,0.2075
+unzip 20240507.tar.gz,0.6752
+delete_unneeded_files,0.2081
+unzip 20240508.tar.gz,0.6752
+delete_unneeded_files,0.2071
+unzip 20240509.tar.gz,0.6753
+delete_unneeded_files,0.2079
+unzip 20240510.tar.gz,0.6742
+delete_unneeded_files,0.2062
+unzip 20240511.tar.gz,0.6737
+delete_unneeded_files,0.2079
+unzip 20240512.tar.gz,0.6738
+delete_unneeded_files,0.2063
+unzip 20240513.tar.gz,0.6753
+delete_unneeded_files,0.2075
+unzip 20240514.tar.gz,0.6754
+delete_unneeded_files,0.2069
+unzip failed 20240515.tar.gz empty file,0.0000
+unzip 20240515.tar.gz,0.0001
+delete_unneeded_files,0.1635
+unzip failed 20240516.tar.gz empty file,0.0000
+unzip 20240516.tar.gz,0.0001
+delete_unneeded_files,0.1618
+unzip 20240517.tar.gz,0.0014
+delete_unneeded_files,0.1642
+unzip 20240518.tar.gz,0.6730
+delete_unneeded_files,0.2041
+unzip 20240519.tar.gz,0.6739
+delete_unneeded_files,0.2042
+unzip 20240520.tar.gz,0.6740
+delete_unneeded_files,0.2107
+unzip 20240521.tar.gz,0.6734
+delete_unneeded_files,0.2042
+unzip 20240522.tar.gz,0.6712
+delete_unneeded_files,0.2051
+unzip 20240523.tar.gz,0.6708
+delete_unneeded_files,0.2050
+unzip 20240524.tar.gz,0.6706
+delete_unneeded_files,0.2086
+unzip 20240525.tar.gz,0.6729
+delete_unneeded_files,0.2063
+unzip 20240526.tar.gz,0.6720
+delete_unneeded_files,0.2074
+unzip 20240527.tar.gz,0.6718
+delete_unneeded_files,0.2092
+unzip 20240528.tar.gz,0.6718
+delete_unneeded_files,0.2097
+unzip 20240529.tar.gz,0.6714
+delete_unneeded_files,0.2063
+unzip 20240530.tar.gz,0.6724
+delete_unneeded_files,0.2090
+unzip 20240531.tar.gz,0.6733
+delete_unneeded_files,0.2066
+unzip 20240601.tar.gz,0.6722
+delete_unneeded_files,0.2084
+unzip 20240602.tar.gz,0.6718
+delete_unneeded_files,0.2067
+unzip 20240603.tar.gz,0.6745
+delete_unneeded_files,0.2090
+unzip 20240604.tar.gz,0.6741
+delete_unneeded_files,0.2083
+unzip 20240605.tar.gz,0.6739
+delete_unneeded_files,0.2082
+unzip 20240606.tar.gz,0.6699
+delete_unneeded_files,0.2077
+unzip 20240607.tar.gz,0.6716
+delete_unneeded_files,0.2073
+unzip 20240608.tar.gz,0.6749
+delete_unneeded_files,0.2080
+unzip 20240609.tar.gz,0.6727
+delete_unneeded_files,0.2079
+unzip 20240610.tar.gz,0.6721
+delete_unneeded_files,0.2083
+unzip 20240611.tar.gz,0.6725
+delete_unneeded_files,0.2083
+unzip 20240612.tar.gz,0.5822
+delete_unneeded_files,0.2011
+unzip 20240613.tar.gz,0.0036
+delete_unneeded_files,0.1647
+unzip 20240614.tar.gz,0.3932
+delete_unneeded_files,0.1911
+unzip 20240615.tar.gz,0.6716
+delete_unneeded_files,0.2074
+unzip 20240616.tar.gz,0.6599
+delete_unneeded_files,0.2077
+unzip 20240617.tar.gz,0.0036
+delete_unneeded_files,0.1657
+unzip 20240618.tar.gz,0.4304
+delete_unneeded_files,0.1927
+unzip 20240619.tar.gz,0.6735
+delete_unneeded_files,0.2071
+unzip 20240620.tar.gz,0.6732
+delete_unneeded_files,0.2071
+unzip 20240621.tar.gz,0.6704
+delete_unneeded_files,0.2078
+unzip 20240622.tar.gz,0.6608
+delete_unneeded_files,0.2062
+unzip 20240623.tar.gz,0.6714
+delete_unneeded_files,0.2089
+unzip 20240624.tar.gz,0.6696
+delete_unneeded_files,0.2083
+unzip 20240625.tar.gz,0.6720
+delete_unneeded_files,0.2087
+unzip 20240626.tar.gz,0.6708
+delete_unneeded_files,0.2067
+unzip 20240627.tar.gz,0.6728
+delete_unneeded_files,0.2071
+unzip 20240628.tar.gz,0.6739
+delete_unneeded_files,0.2082
+unzip 20240629.tar.gz,0.6719
+delete_unneeded_files,0.2075
+unzip 20240630.tar.gz,0.6706
+delete_unneeded_files,0.2129
+unzip 20240701.tar.gz,0.6720
+delete_unneeded_files,0.2071
+unzip 20240702.tar.gz,0.6731
+delete_unneeded_files,0.2066
+unzip 20240703.tar.gz,0.6727
+delete_unneeded_files,0.2091
+unzip 20240704.tar.gz,0.6741
+delete_unneeded_files,0.2085
+unzip 20240705.tar.gz,0.6727
+delete_unneeded_files,0.2080
+unzip 20240706.tar.gz,0.6714
+delete_unneeded_files,0.2081
+unzip 20240707.tar.gz,0.6715
+delete_unneeded_files,0.2077
+unzip 20240708.tar.gz,0.6722
+delete_unneeded_files,0.2075
+unzip 20240709.tar.gz,0.6712
+delete_unneeded_files,0.2086
+unzip 20240710.tar.gz,0.6714
+delete_unneeded_files,0.2086
+unzip 20240711.tar.gz,0.6716
+delete_unneeded_files,0.2065
+unzip 20240712.tar.gz,0.6744
+delete_unneeded_files,0.2068
+unzip 20240713.tar.gz,0.6720
+delete_unneeded_files,0.2084
+unzip 20240714.tar.gz,0.6721
+delete_unneeded_files,0.2079
+unzip 20240715.tar.gz,0.6727
+delete_unneeded_files,0.2088
+unzip 20240716.tar.gz,0.6724
+delete_unneeded_files,0.2088
+unzip 20240717.tar.gz,0.6720
+delete_unneeded_files,0.2096
+unzip 20240718.tar.gz,0.6712
+delete_unneeded_files,0.2085
+unzip 20240719.tar.gz,0.6720
+delete_unneeded_files,0.2087
+unzip 20240720.tar.gz,0.6708
+delete_unneeded_files,0.2083
+unzip 20240721.tar.gz,0.6748
+delete_unneeded_files,0.2083
+unzip 20240722.tar.gz,0.6723
+delete_unneeded_files,0.2080
+unzip 20240723.tar.gz,0.6733
+delete_unneeded_files,0.2080
+unzip 20240724.tar.gz,0.6711
+delete_unneeded_files,0.2074
+unzip 20240725.tar.gz,0.6735
+delete_unneeded_files,0.2086
+unzip 20240726.tar.gz,0.6745
+delete_unneeded_files,0.2079
+unzip 20240727.tar.gz,0.6740
+delete_unneeded_files,0.2084
+unzip 20240728.tar.gz,0.6718
+delete_unneeded_files,0.2086
+unzip 20240729.tar.gz,0.6741
+delete_unneeded_files,0.2097
+unzip 20240730.tar.gz,0.6729
+delete_unneeded_files,0.2107
+unzip 20240731.tar.gz,0.6728
+delete_unneeded_files,0.2086
+unzip 20240801.tar.gz,0.6737
+delete_unneeded_files,0.2085
+unzip 20240802.tar.gz,0.6736
+delete_unneeded_files,0.2080
+unzip 20240803.tar.gz,0.6737
+delete_unneeded_files,0.2099
+unzip 20240804.tar.gz,0.6741
+delete_unneeded_files,0.2079
+unzip 20240805.tar.gz,0.6728
+delete_unneeded_files,0.2083
+unzip 20240806.tar.gz,0.6730
+delete_unneeded_files,0.2078
+unzip 20240807.tar.gz,0.6740
+delete_unneeded_files,0.2083
+unzip 20240808.tar.gz,0.6761
+delete_unneeded_files,0.2079
+unzip 20240809.tar.gz,0.6748
+delete_unneeded_files,0.2085
+unzip 20240810.tar.gz,0.6760
+delete_unneeded_files,0.2098
+unzip 20240811.tar.gz,0.6735
+delete_unneeded_files,0.2078
+unzip 20240812.tar.gz,0.6722
+delete_unneeded_files,0.2080
+unzip 20240813.tar.gz,0.6732
+delete_unneeded_files,0.2086
+unzip 20240814.tar.gz,0.6694
+delete_unneeded_files,0.2074
+unzip 20240815.tar.gz,0.6714
+delete_unneeded_files,0.2097
+unzip 20240816.tar.gz,0.6729
+delete_unneeded_files,0.2079
+unzip 20240817.tar.gz,0.6743
+delete_unneeded_files,0.2094
+unzip 20240818.tar.gz,0.6747
+delete_unneeded_files,0.2104
+unzip 20240819.tar.gz,0.6738
+delete_unneeded_files,0.2083
+unzip 20240820.tar.gz,0.6725
+delete_unneeded_files,0.2084
+unzip 20240821.tar.gz,0.6717
+delete_unneeded_files,0.2086
+unzip 20240822.tar.gz,0.6724
+delete_unneeded_files,0.2089
+unzip 20240823.tar.gz,0.6706
+delete_unneeded_files,0.2089
+unzip 20240824.tar.gz,0.6730
+delete_unneeded_files,0.2078
+unzip 20240825.tar.gz,0.6721
+delete_unneeded_files,0.2087
+unzip 20240826.tar.gz,0.6761
+delete_unneeded_files,0.2091
+unzip 20240827.tar.gz,0.6722
+delete_unneeded_files,0.2082
+unzip 20240828.tar.gz,0.6721
+delete_unneeded_files,0.2081
+unzip 20240829.tar.gz,0.6733
+delete_unneeded_files,0.2077
+unzip 20240830.tar.gz,0.6731
+delete_unneeded_files,0.2080
+unzip 20240831.tar.gz,0.6718
+delete_unneeded_files,0.2091
+unzip 20240901.tar.gz,0.6727
+delete_unneeded_files,0.2093
+unzip 20240902.tar.gz,0.6728
+delete_unneeded_files,0.2092
+unzip 20240903.tar.gz,0.6746
+delete_unneeded_files,0.2148
+unzip 20240904.tar.gz,0.6736
+delete_unneeded_files,0.2083
+unzip 20240905.tar.gz,0.6728
+delete_unneeded_files,0.2081
+unzip 20240906.tar.gz,0.6730
+delete_unneeded_files,0.2084
+unzip 20240907.tar.gz,0.6723
+delete_unneeded_files,0.2078
+unzip 20240908.tar.gz,0.6721
+delete_unneeded_files,0.2086
+unzip 20240909.tar.gz,0.6715
+delete_unneeded_files,0.2077
+unzip 20240910.tar.gz,0.6717
+delete_unneeded_files,0.2086
+unzip 20240911.tar.gz,0.6735
+delete_unneeded_files,0.2091
+unzip 20240912.tar.gz,0.6730
+delete_unneeded_files,0.2091
+unzip 20240913.tar.gz,0.6734
+delete_unneeded_files,0.2084
+unzip 20240914.tar.gz,0.6722
+delete_unneeded_files,0.2099
+unzip 20240915.tar.gz,0.6753
+delete_unneeded_files,0.2084
+unzip 20240916.tar.gz,0.6735
+delete_unneeded_files,0.2086
+unzip 20240917.tar.gz,0.6729
+delete_unneeded_files,0.2096
+unzip 20240918.tar.gz,0.6730
+delete_unneeded_files,0.2093
+unzip 20240919.tar.gz,0.6720
+delete_unneeded_files,0.2093
+unzip 20240920.tar.gz,0.6738
+delete_unneeded_files,0.2081
+unzip 20240921.tar.gz,0.6730
+delete_unneeded_files,0.2087
+unzip 20240922.tar.gz,0.6733
+delete_unneeded_files,0.2094
+unzip 20240923.tar.gz,0.6734
+delete_unneeded_files,0.2097
+unzip 20240924.tar.gz,0.6732
+delete_unneeded_files,0.2091
+unzip 20240925.tar.gz,0.6746
+delete_unneeded_files,0.2088
+unzip 20240926.tar.gz,0.6716
+delete_unneeded_files,0.2082
+unzip 20240927.tar.gz,0.6723
+delete_unneeded_files,0.2090
+unzip 20240928.tar.gz,0.6708
+delete_unneeded_files,0.2081
+unzip 20240929.tar.gz,0.6731
+delete_unneeded_files,0.2088
+unzip 20240930.tar.gz,0.6736
+delete_unneeded_files,0.2090
+unzip 20241001.tar.gz,0.6760
+delete_unneeded_files,0.2090
+unzip 20241002.tar.gz,0.6734
+delete_unneeded_files,0.2077
+unzip 20241003.tar.gz,0.6736
+delete_unneeded_files,0.2157
+unzip 20241004.tar.gz,0.6736
+delete_unneeded_files,0.2091
+unzip 20241005.tar.gz,0.6723
+delete_unneeded_files,0.2091
+unzip 20241006.tar.gz,0.6726
+delete_unneeded_files,0.2087
+unzip 20241007.tar.gz,0.6761
+delete_unneeded_files,0.2090
+unzip 20241008.tar.gz,0.6730
+delete_unneeded_files,0.2095
+unzip 20241009.tar.gz,0.6728
+delete_unneeded_files,0.2085
+unzip 20241010.tar.gz,0.6717
+delete_unneeded_files,0.2118
+unzip 20241011.tar.gz,0.6748
+delete_unneeded_files,0.2081
+unzip 20241012.tar.gz,0.6747
+delete_unneeded_files,0.2086
+unzip 20241013.tar.gz,0.6731
+delete_unneeded_files,0.2087
+unzip 20241014.tar.gz,0.6731
+delete_unneeded_files,0.2085
+unzip 20241015.tar.gz,0.6722
+delete_unneeded_files,0.2093
+unzip 20241016.tar.gz,0.6713
+delete_unneeded_files,0.2078
+unzip 20241017.tar.gz,0.6742
+delete_unneeded_files,0.2083
+unzip 20241018.tar.gz,0.6723
+delete_unneeded_files,0.2086
+unzip 20241019.tar.gz,0.6745
+delete_unneeded_files,0.2083
+unzip 20241020.tar.gz,0.6735
+delete_unneeded_files,0.2084
+unzip 20241021.tar.gz,0.6747
+delete_unneeded_files,0.2107
+unzip 20241022.tar.gz,0.6762
+delete_unneeded_files,0.2091
+unzip 20241023.tar.gz,0.6746
+delete_unneeded_files,0.2089
+unzip 20241024.tar.gz,0.6784
+delete_unneeded_files,0.2087
+unzip 20241025.tar.gz,0.6759
+delete_unneeded_files,0.2103
+unzip 20241026.tar.gz,0.6755
+delete_unneeded_files,0.2095
+unzip 20241027.tar.gz,0.6781
+delete_unneeded_files,0.2112
+unzip 20241028.tar.gz,0.6779
+delete_unneeded_files,0.2141
+unzip 20241029.tar.gz,0.6748
+delete_unneeded_files,0.2083
+unzip 20241030.tar.gz,0.6751
+delete_unneeded_files,0.2094
+unzip 20241031.tar.gz,0.6754
+delete_unneeded_files,0.2088
+unzip 20241101.tar.gz,0.6763
+delete_unneeded_files,0.2077
+unzip 20241102.tar.gz,0.6759
+delete_unneeded_files,0.2097
+unzip 20241103.tar.gz,0.6768
+delete_unneeded_files,0.2086
+unzip 20241104.tar.gz,0.6762
+delete_unneeded_files,0.2098
+unzip 20241105.tar.gz,0.6769
+delete_unneeded_files,0.2091
+unzip 20241106.tar.gz,0.6004
+delete_unneeded_files,0.2038
+unzip 20241107.tar.gz,0.0036
+delete_unneeded_files,0.1673
+unzip 20241108.tar.gz,0.0036
+delete_unneeded_files,0.1675
+unzip 20241109.tar.gz,0.0036
+delete_unneeded_files,0.1641
+unzip 20241110.tar.gz,0.0036
+delete_unneeded_files,0.1650
+unzip 20241111.tar.gz,0.5954
+delete_unneeded_files,0.2019
+unzip 20241112.tar.gz,0.6772
+delete_unneeded_files,0.2133
+unzip 20241113.tar.gz,0.6765
+delete_unneeded_files,0.2086
+unzip 20241114.tar.gz,0.6769
+delete_unneeded_files,0.2085
+unzip 20241115.tar.gz,0.6744
+delete_unneeded_files,0.2065
+unzip 20241116.tar.gz,0.6710
+delete_unneeded_files,0.2068
+unzip 20241117.tar.gz,0.6734
+delete_unneeded_files,0.2069
+unzip 20241118.tar.gz,0.6719
+delete_unneeded_files,0.2075
+unzip 20241119.tar.gz,0.6710
+delete_unneeded_files,0.2069
+unzip 20241120.tar.gz,0.6714
+delete_unneeded_files,0.2088
+unzip 20241121.tar.gz,0.6733
+delete_unneeded_files,0.2075
+unzip 20241122.tar.gz,0.6733
+delete_unneeded_files,0.2076
+unzip 20241123.tar.gz,0.6731
+delete_unneeded_files,0.2065
+unzip 20241124.tar.gz,0.6715
+delete_unneeded_files,0.2080
+unzip 20241125.tar.gz,0.6720
+delete_unneeded_files,0.2079
+unzip 20241126.tar.gz,0.6740
+delete_unneeded_files,0.2083
+unzip 20241127.tar.gz,0.6730
+delete_unneeded_files,0.2079
+unzip 20241128.tar.gz,0.6727
+delete_unneeded_files,0.2077
+unzip 20241129.tar.gz,0.6734
+delete_unneeded_files,0.2082
+unzip 20241130.tar.gz,0.6738
+delete_unneeded_files,0.2085
+unzip 20241201.tar.gz,0.6758
+delete_unneeded_files,0.2080
+unzip 20241202.tar.gz,0.6749
+delete_unneeded_files,0.2079
+unzip 20241203.tar.gz,0.6743
+delete_unneeded_files,0.2067
+unzip 20241204.tar.gz,0.6751
+delete_unneeded_files,0.2069
+unzip 20241205.tar.gz,0.6757
+delete_unneeded_files,0.2066
+unzip 20241206.tar.gz,0.6740
+delete_unneeded_files,0.2073
+unzip 20241207.tar.gz,0.6740
+delete_unneeded_files,0.2088
+unzip 20241208.tar.gz,0.6736
+delete_unneeded_files,0.2081
+unzip 20241209.tar.gz,0.6721
+delete_unneeded_files,0.2088
+unzip 20241210.tar.gz,0.6744
+delete_unneeded_files,0.2088
+unzip 20241211.tar.gz,0.6736
+delete_unneeded_files,0.2084
+unzip 20241212.tar.gz,0.6755
+delete_unneeded_files,0.2079
+unzip 20241213.tar.gz,0.6738
+delete_unneeded_files,0.2079
+unzip 20241214.tar.gz,0.6745
+delete_unneeded_files,0.2079
+unzip 20241215.tar.gz,0.6730
+delete_unneeded_files,0.2085
+unzip 20241216.tar.gz,0.6760
+delete_unneeded_files,0.2083
+unzip 20241217.tar.gz,0.6761
+delete_unneeded_files,0.2095
+unzip 20241218.tar.gz,0.6758
+delete_unneeded_files,0.2087
+unzip 20241219.tar.gz,0.6746
+delete_unneeded_files,0.2081
+unzip 20241220.tar.gz,0.6743
+delete_unneeded_files,0.2085
+unzip 20241221.tar.gz,0.6768
+delete_unneeded_files,0.2094
+unzip 20241222.tar.gz,0.6744
+delete_unneeded_files,0.2087
+unzip 20241223.tar.gz,0.6755
+delete_unneeded_files,0.2084
+unzip 20241224.tar.gz,0.6772
+delete_unneeded_files,0.2095
+unzip 20241225.tar.gz,0.6769
+delete_unneeded_files,0.2093
+unzip 20241226.tar.gz,0.6789
+delete_unneeded_files,0.2087
+unzip 20241227.tar.gz,0.6769
+delete_unneeded_files,0.2083
+unzip 20241228.tar.gz,0.6790
+delete_unneeded_files,0.2087
+unzip 20241229.tar.gz,0.6753
+delete_unneeded_files,0.2085
+unzip 20241230.tar.gz,0.6762
+delete_unneeded_files,0.2097
+unzip 20241231.tar.gz,0.6764
+delete_unneeded_files,0.2160
+unzip 20250101.tar.gz,0.6770
+delete_unneeded_files,0.2094
+unzip 20250102.tar.gz,0.6767
+delete_unneeded_files,0.2096
+unzip 20250103.tar.gz,0.6758
+delete_unneeded_files,0.2094
+unzip 20250104.tar.gz,0.6769
+delete_unneeded_files,0.2090
+unzip 20250105.tar.gz,0.6775
+delete_unneeded_files,0.2086
+unzip 20250106.tar.gz,0.6769
+delete_unneeded_files,0.2093
+unzip 20250107.tar.gz,0.6769
+delete_unneeded_files,0.2085
+unzip 20250108.tar.gz,0.6749
+delete_unneeded_files,0.2084
+unzip 20250109.tar.gz,0.6787
+delete_unneeded_files,0.2083
+unzip 20250110.tar.gz,0.6779
+delete_unneeded_files,0.2087
+unzip 20250111.tar.gz,0.6762
+delete_unneeded_files,0.2086
+unzip 20250112.tar.gz,0.6797
+delete_unneeded_files,0.2084
+unzip 20250113.tar.gz,0.6798
+delete_unneeded_files,0.2106
+unzip 20250114.tar.gz,0.6789
+delete_unneeded_files,0.2088
+unzip 20250115.tar.gz,0.6787
+delete_unneeded_files,0.2093
+unzip 20250116.tar.gz,0.6789
+delete_unneeded_files,0.2094
+unzip 20250117.tar.gz,0.6785
+delete_unneeded_files,0.2086
+unzip 20250118.tar.gz,0.6773
+delete_unneeded_files,0.2080
+unzip 20250119.tar.gz,0.6783
+delete_unneeded_files,0.2092
+unzip 20250120.tar.gz,0.6772
+delete_unneeded_files,0.2091
+unzip 20250121.tar.gz,0.6777
+delete_unneeded_files,0.2091
+unzip 20250128.zip,0.6338
+delete_unneeded_files,0.2180
+unzip 20250129.zip,0.6327
+delete_unneeded_files,0.2181
+unzip 20250130.zip,0.6305
+delete_unneeded_files,0.2174
+unzip 20250131.zip,0.0355
+delete_unneeded_files,0.1743
+
+Total time taken: 335.6401 seconds
