@@ -509,8 +509,8 @@ if __name__ == "__main__":
     doFit.date_pwv_file = f'time_pwv_2402.csv'  # file to save the date and PWV values
     doFit.time_take_file = 'time_pwv_take2402.csv'  # file to save the time taken for each TIME
     doFit.am_temp = "SPole_annual_50.amc"  # am fit template file
-    doFit.get_slow_FNs_glob = False
-    doFit.sAz_slow_FNs = ["20250101_010135_scanAz_slow.txt"] 
+    #doFit.get_slow_FNs_glob = True
+    doFit.sAz_slow_FNs = ["20250102_010135_scanAz_slow.txt"] 
     cleanCSV(time_take_file=doFit.time_take_file, date_pwv_file=doFit.date_pwv_file)  # clean old csv files
     doFit.run()  # run the main function
     doFit.remove_old_files(path_save=doFit.path_save)  # remove old files

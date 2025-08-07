@@ -93,7 +93,7 @@ class slow2FitPWV:
         self.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
         self.date_pwv_file = 'time_pwv.csv'  # file to save the date and PWV values
         self.percentage = 0.3  # percentage to find the extreme peak, default is 30%
-
+ 
 
     def remove_old_files(self,path_save = "results/"):
         """"
@@ -318,7 +318,9 @@ class slow2FitPWV:
                 continue
             else:
                 new_numbers.append(number)
+                #print("number added:", number)
 
+        #print("new_numbers:", new_numbers)
         aver = np.average(new_numbers)
         return aver
 
@@ -438,22 +440,20 @@ class slow2FitPWV:
             T0, T1, T2, T3, EL = 0.0, 0.0, 0.0, 0.0, 0.0
             #AZ = 0.0  # AZ is not used right now
 
-            for i in range(len(obs_values["TSRC0"])):
-                T0 += obs_values["TSRC0"][i]
-                T1 += obs_values["TSRC1"][i]
-                T2 += obs_values["TSRC2"][i]
-                T3 += obs_values["TSRC3"][i]
-                EL += obs_values["EL"][i]
-                #AZ += obs_values["AZ"][i]
-
             percentage = self.percentage  # percentage to find the extreme peak, default is 30%
             #average the values by peakOut function
+            
+
             T0 = self.peakOut(obs_values["TSRC0"])
             T1 = self.peakOut(obs_values["TSRC1"])
             T2 = self.peakOut(obs_values["TSRC2"])
             T3 = self.peakOut(obs_values["TSRC3"])
             EL = self.peakOut(obs_values["EL"])
 
+            # print(f"TSRC1: {T1}, type: {type(T1)}")
+            # print(f"TSRC2: {T2}, type: {type(T2)}")
+            # print(f"TSRC3: {T3}, type: {type(T3)}")
+            # print(f"EL: {EL}, type: {type(EL)}")    
             #AZ = AZ  # AZ is not used right now, suppose not average?
             
 
@@ -480,10 +480,10 @@ class slow2FitPWV:
             #call the dat2Am function to create amc;ams;amr files
             self.dat2Am(am_temp_inp = am_temp_4dat, dat_fn_inp=dat_filename, zen_ang=zen, path=path)
 
-            if path is not None:
-                self.remove_old_files(path_save = path) #to save space for my laptop
-            else:
-                self.remove_old_files("") #to save space for my laptop
+            # if path is not None:
+            #     self.remove_old_files(path_save = path) #to save space for my laptop
+            # else:
+            #     self.remove_old_files("") #to save space for my laptop
 
             end = perf_counter()
 
@@ -561,7 +561,7 @@ class slow2FitPWV:
 if __name__ == "__main__":
     #How to use
     doFit = slow2FitPWV()
-    doFit.num2Process = 640  # set the number of TIME keys to process at a time
+    doFit.num2Process = 300  # set the number of TIME keys to process at a time
     doFit.percentage = 0.1  # set the percentage to find the extreme peak, default is 30%
     doFit.path_save = "results/" 
     doFit.date_pwv_file = f'time_pwv_p{doFit.percentage}.csv'  # file to save the date and PWV values
@@ -572,4 +572,4 @@ if __name__ == "__main__":
     cleanCSV(time_take_file=doFit.time_take_file, date_pwv_file=doFit.date_pwv_file)  # clean old csv files
     doFit.run()  # run the main function
     sum_time_take(doFit.time_take_file)  # sum the time taken for each TIME in the time_take.csv file
-    #print("All done.")
+    print("All done.")
