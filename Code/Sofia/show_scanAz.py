@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
+from time import perf_counter
 
 class showScanAz:
 
@@ -68,7 +68,7 @@ class showScanAz:
         f.close()
 
         #print(out_dict)  # print the dictionary to check the data    
-        print(len(out_dict.keys()), "TIME keys found in the dictionary.")
+        #print(len(out_dict.keys()), "TIME keys found in the dictionary.")
         
         num2Pro = self.num2Process
 
@@ -152,19 +152,26 @@ class showScanAz:
         for sAz_slow_FN in sAz_slow_FNs:
 
             self.slow2Time(path = path_save, scanAz_slow_filename = sAz_slow_FN)
-            print(f"{sAz_slow_FN} done")
+            #print(f"{sAz_slow_FN} done")
 
 
 if __name__ == "__main__":
-    myShow = showScanAz()
-    myShow.num2Process = 312  # number of TIME keys to process at a time
-    myShow.skip_Ang_Neg = False  
-    myShow.get_slow_FNs_glob = False
-    myShow.sAz_slow_FNs = ["20240110_130134_scanAz_slow.txt"]
-    myShow.run()
+    
+    start_time = perf_counter()
 
-    print("CSV write complete\nread CSV")
+    myShow = showScanAz()
+    myShow.num2Process = 640  # number of TIME keys to process at a time
+    myShow.skip_Ang_Neg = False  
+    #myShow.get_slow_FNs_glob = False
+    #myShow.sAz_slow_FNs = ["20240110_130134_scanAz_slow.txt"]
+    myShow.run()
+    
+    end_time = perf_counter()
+
+    print(f"slow write to csv complete take {end_time - start_time}\nread CSV")
     # make plots
+    start_time = perf_counter()
+
     showAngle = pd.read_csv('showAngle.csv')
     showTSRC = pd.read_csv('showTSRC.csv')
 
@@ -177,22 +184,41 @@ if __name__ == "__main__":
         showTSRC['T_mid'] = pd.to_datetime(showTSRC['T_mid'], format='%Y-%m-%d %H:%M:%S.%f')
     except Exception as e:
         print(f"Error parsing showTSRC['T_mid']: {e}")
+    end_time = perf_counter()
+    print(f"csv read complete take {end_time - start_time}")
 
+    start_time = perf_counter()
     plt.figure(figsize=(30, 15))
 
-    plt.plot(showAngle['Time'], showAngle['AZ'], label='Azimuth', color='tab:red', marker='o', linestyle='-')
-    plt.plot(showAngle['Time'], showAngle['Zen'], label='Elevation', color='tab:green', marker='x', linestyle='--')
+    
+
+    plt.plot(showAngle['Time'], showAngle['AZ'], label='Azimuth', color='blue', marker='o', linestyle='-')
+    plt.plot(showAngle['Time'], showAngle['Zen'], label='Elevation', color='red', marker='x', linestyle='--')
     plt.xlabel('Time')
     plt.ylabel('Angle (degrees)')
-    plt.title('Angles over Time')
+    plt.title('Ang over Time')
+    #plt.yscale('log')
     plt.grid()
     plt.legend()
     plt.xticks(rotation=45)
-    plt.tight_layout()
+    
+    plt.savefig('Plots/Ang_over_Time.png',dpi = 1000)
+    # plt.savefig('Plots/Angles_over_Time.svg')
 
-    plt.savefig('Plots/Angles_over_Time.png',dpi = 300)
-    plt.savefig('Plots/Angles_over_Time.svg')
+    plt.hist(showAngle['AZ'], bins=10, color='blue', alpha=0.7)
+    plt.xlabel('Angle (degrees)')
+    plt.ylabel('Number of Occurrences')
+    plt.title('Histogram of Zenith Angles')
+    plt.grid()
+    plt.savefig('Plots/Histogram_Ang.png',dpi = 300)
+    plt.close()
 
+    plt.hist(showAngle['Zen'], bins=10, color='red', alpha=0.7)
+    plt.xlabel('Angle (degrees)')
+    plt.ylabel('Number of Occurrences')
+    plt.title('Histogram of Zenith Angles')
+    plt.grid()
+    plt.savefig('Plots/Histogram_Zen.png',dpi = 300)
     plt.close()
 
     plt.plot(showTSRC['T_mid'], showTSRC['T0_ave'], label='T0 Average', color='tab:blue', marker='o', linestyle='-')
@@ -205,12 +231,25 @@ if __name__ == "__main__":
     plt.grid()
     plt.legend()
     plt.xticks(rotation=45)
-    plt.tight_layout()
+    
 
     plt.savefig('Plots/Temperature_over_Time.png',dpi = 300)
     plt.savefig('Plots/Temperature_over_Time.svg')
 
     plt.close()
 
-    print("Plots done")
+    plt.hist(showTSRC['T0_ave'], bins=50, color='tab:blue', alpha=0.7, label='T0 Average')
+    plt.hist(showTSRC['T1_ave'], bins=50, color='tab:orange', alpha=0.7, label='T1 Average')
+    plt.hist(showTSRC['T2_ave'], bins=10, color='tab:green', alpha=0.7, label='T2 Average')
+    plt.hist(showTSRC['T3_ave'], bins=10, color='tab:red', alpha=0.7, label='T3 Average')
+    plt.xlabel('Temperature (K)')
+    plt.ylabel('Number of Occurrences')
+    plt.title('Histogram of Temperatures')
+    plt.grid()
+    plt.savefig('Plots/Histogram_Temperature.png',dpi = 300)
+    plt.savefig('Plots/Histogram_Temperature.svg')
+    plt.close()
+
+    end_time = perf_counter()
+    print(f"Plots done take {end_time - start_time}")
 
