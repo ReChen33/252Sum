@@ -1,34 +1,22 @@
 import os
 from typing import Dict
 import glob
-import matplotlib.pyplot as plt
+import pandas as pd
 from datetime import datetime, timedelta
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 class showScanAz:
 
     def __init__(self):
-        """
-        Initialize the slow2FitPWV class.
-
-        variable:
-            self.num2Process: int, the number of TIME keys to process at a time
-            self.path_save: str, the path to save the results
-            self.sAz_slow_FNs: list, the list of slow scan azimuth filenames
-            self.get_sAz_slow_FNs: bool, whether to get the slow scan azimuth filenames by glob
-            self.am_temp: str, the am fit template file
-            self.time_take_file: str, the file to save the time taken for each TIME
-            self.date_pwv_file: str, the file to save the date and PWV values
-        """
 
         self.num2Process = 640  # the number of TIME keys to process at a time
         self.path_save = "results/"
         self.sAz_slow_FNs = []
         self.get_slow_FNs_glob = True # whether to get the scan azimuth slow filenames by the function using glob
-        self.am_temp = "SPole_annual_50.amc"
-        self.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
-        self.date_pwv_file = 'time_pwv.csv'  # file to save the date and PWV values
-        self.percentage = 0.3  # percentage to find the extreme peak, default is 30%
+        self.skip_Ang_Neg = True # whether to skip negative angle values
+
 
     def slow2Time(self, path = None, scanAz_slow_filename = "20250101_010135_scanAz_slow.txt"):
         """
@@ -40,66 +28,57 @@ class showScanAz:
             #join the path and filename
             scanAz_slow_filename = os.path.join(path, scanAz_slow_filename)
 
-
-        #use a Dict to save the data
-        """out_dict = 
-            ["TIME":
-                ["TSRC0":[value list], "TSRC1":[value list], "TSRC2":[value list], 
-                "TSRC3":[value list], "EL":[value list], "AZ":[value list]]
-            ]
-        """
         out_dict: Dict[str, Dict[str,float]] = {}
 
         #read the scanAz_slow file
         with open(scanAz_slow_filename, 'r') as f:
-            for line in f:
-                if not (line.startswith('#') or line.startswith('TIME')):  
-                    # skip comment lines & col names in scan_Az files
-                    parts = line.split()
+            with open("showAngle.csv", "a+") as angle:
+                for line in f:
+                    if not (line.startswith('#') or line.startswith('TIME')):  
+                        # skip comment lines & col names in scan_Az files
+                        parts = line.split()
 
-                    time = parts[0]  # TIME is the first part
-                    #need rewrite time to let {time} able to be used as filename
-                    time = time.replace(':', '').replace('-', '').replace(' ', '_').replace('T', ' ')  # format TIME for filename
-                    #print("Formatted TIME for filename:", time)
+                        time = parts[0]  # TIME is the first part
+                        #need rewrite time to let {time} able to be used as filename
+                        time = time.replace('T', ' ')  # format TIME for filename
+                        #print("Formatted TIME for filename:", time)
+                        
+                        EL = float(parts[23])  # elevation is the 24th part
+                        AZ = float(parts[24])  # azimuth is the 25th part
 
-                    out_dict[time] = {
-                        "TSRC0": float(parts[19]),
-                        "TSRC1": float(parts[20]),
-                        "TSRC2": float(parts[21]),
-                        "TSRC3": float(parts[22]),
-                        "EL": float(parts[23]),
-                        "AZ": float(parts[24])
-                    }
+                        out_dict[time] = {
+                            "TSRC0": float(parts[19]),
+                            "TSRC1": float(parts[20]),
+                            "TSRC2": float(parts[21]),
+                            "TSRC3": float(parts[22]),
+                            "EL": EL,
+                            "AZ": AZ
+                        }
+                        if EL < 0 or AZ < 0:
+                            if self.skip_Ang_Neg:
+                                continue  # skip negative values
+                            else:
+                                Zen = EL
+                        else:
+                            Zen = 90 - EL  # calculate zenith angle to elevation
+
+                        time_data = datetime.strptime(time, '%Y-%m-%d %H:%M:%S.%f') 
+                        angle.write(f"{time_data.strftime('%Y-%m-%d %H:%M:%S.%f')},{AZ},{Zen}\n")
+            angle.close()
         f.close()
+
         #print(out_dict)  # print the dictionary to check the data    
         print(len(out_dict.keys()), "TIME keys found in the dictionary.")
-
-        # num4Time = 0 #to see how many done by py
-
-        #A for loop to create the dat files based on diff TIME
-
+        
         num2Pro = self.num2Process
 
-
-
-        for i in range(0, len(out_dict.keys()), num2Pro):  # process {num2Pro} entries at a time
-            #print(i+num2Pro, "out of", len(out_dict.keys()), "TIME keys processed.")
+        for i in range(0, len(out_dict.keys()), num2Pro): 
 
             if i+(num2Pro) < len(out_dict.keys()):
                 # get the current time and its values
-                time = list(out_dict.keys())[i:i+num2Pro]  # get the next {num2Pro} TIME keys
-                #time_name = f"{time[0]}E{time[num2Pro-1][-13:]}"
-                
+                time = list(out_dict.keys())[i:i+num2Pro]  # get the next {num2Pro} TIME keys                
             else:
                 time = list(out_dict.keys())[i:]  # get the next {num2Pro} TIME keys
-                #time_name = f"{time[0]}E{time[-1][-13:]}"
-
-            
-            #time_name = time_name.replace(' ', 'S')
-            
-            #print(f"For {time_name}\n\t{time_data} {time_s} {time_e}")
-            #Example: "20250101S010136.531267E010146.233995"
-            #print(f"Processing TIME: {time_name}")
 
             obs_values: Dict[str, float] = {}
             for t in time:
@@ -110,30 +89,20 @@ class showScanAz:
 
             #print(obs_values)  # print the obs_values to check the data
 
-            T0 = np.average(obs_values["TSRC0"]) #***
-            T1 = np.average(obs_values["TSRC1"]) #***
-            T2 = np.average(obs_values["TSRC2"]) #***
-            T3 = np.average(obs_values["TSRC3"]) #***
-            EL = np.array(obs_values["EL"]) #***
-            AZ = np.array(obs_values["AZ"]) #***
+            T0 = np.average(obs_values["TSRC0"]) 
+            T1 = np.average(obs_values["TSRC1"]) 
+            T2 = np.average(obs_values["TSRC2"]) 
+            T3 = np.average(obs_values["TSRC3"]) 
 
-            Zen = 90 - EL  # calculate zenith angle to elevation
+            time_range = [datetime.strptime(t, '%Y-%m-%d %H:%M:%S.%f') for t in time]
+            time_range = np.array(time_range)
 
-            time_10min = [datetime.strptime(t, '%Y%m%d %H%M%S.%f') for t in time]
-            #print(f"Time range: {time_10min[0]} to {time_10min[-1]}")
+            time_pass = time_range[-1] - time_range[0]          
+            time_real_mid = time_range[0] + time_pass 
 
-            time_pass = time_10min[-1] - time_10min[0]            
-            time_real_mid = time_10min[0] + time_pass #***
-            #print(time_real_mid)
-            plt.subplot(2,1,1)
-            plt.scatter(time_real_mid, T0, label=f'TSRC0',color='black')
-            plt.scatter(time_real_mid, T1, label=f'TSRC1',color='red')
-            plt.scatter(time_real_mid, T2, label=f'TSRC2',color='green')
-            plt.scatter(time_real_mid, T3, label=f'TSRC3',color='blue')
-
-            plt.subplot(2,1,2)
-            plt.plot(time_10min, Zen, label=f'Zenith', color='red')
-            plt.plot(time_10min, AZ, label=f'Azimuth', color='green')
+            with open("showTSRC.csv", "a+") as f:
+                f.write(f"{time_real_mid},{T0},{T1},{T2},{T3}\n")
+                f.close()
 
     def getsAzSlowFilenames(self):
         """
@@ -174,37 +143,74 @@ class showScanAz:
         sAz_slow_FNs.sort()
         #print(sAz_slow_FNs)
 
-        num4sAzFN = 0
-        plt.figure(figsize=(20, 12))  # create a figure for plotting
+        with open("showTSRC.csv", "w+") as TSRC:
+            TSRC.write("T_mid,T0_ave,T1_ave,T2_ave,T3_ave\n")
+
+        with open("showAngle.csv", "w+") as angle:
+            angle.write("Time,AZ,Zen\n")
+
         for sAz_slow_FN in sAz_slow_FNs:
-            num4sAzFN += 1  # count the number of slow scan azimuth files processed
 
             self.slow2Time(path = path_save, scanAz_slow_filename = sAz_slow_FN)
-
-            #show number of time sAz_slow_FN processed
-            #print(f"Processed: {sAz_slow_FN} \n{num4sAzFN} in {len(sAz_slow_FNs)} slow scan azimuth files.")
-        plt.subplot(2,1,1)
-        plt.title('Scan Azimuth Data')
-        plt.xlabel('Time') 
-        plt.ylabel('Temperature (K)')
-        plt.grid()
-        plt.legend()
-
-        plt.subplot(2,1,2)
-        plt.title('Scan Azimuth Data')
-        plt.xlabel('Time') 
-        plt.ylabel('Azimuth Angle (degrees)')
-        plt.grid()
-        plt.legend()
-        
-        plt.savefig(f"testShow.png", dpi=300)
-
-        plt.show()
+            print(f"{sAz_slow_FN} done")
 
 
 if __name__ == "__main__":
     myShow = showScanAz()
     myShow.num2Process = 312  # number of TIME keys to process at a time
+    myShow.skip_Ang_Neg = False  
     myShow.get_slow_FNs_glob = False
-    myShow.sAz_slow_FNs = ["20250101_010135_scanAz_slow.txt"]
+    myShow.sAz_slow_FNs = ["20240110_130134_scanAz_slow.txt"]
     myShow.run()
+
+    print("CSV write complete\nread CSV")
+    # make plots
+    showAngle = pd.read_csv('showAngle.csv')
+    showTSRC = pd.read_csv('showTSRC.csv')
+
+    try:
+        showAngle['Time'] = pd.to_datetime(showAngle['Time'], format='%Y-%m-%d %H:%M:%S.%f')
+    except Exception as e:
+        print(f"Error parsing showAngle['Time']: {e}")
+
+    try:
+        showTSRC['T_mid'] = pd.to_datetime(showTSRC['T_mid'], format='%Y-%m-%d %H:%M:%S.%f')
+    except Exception as e:
+        print(f"Error parsing showTSRC['T_mid']: {e}")
+
+    plt.figure(figsize=(30, 15))
+
+    plt.plot(showAngle['Time'], showAngle['AZ'], label='Azimuth', color='tab:red', marker='o', linestyle='-')
+    plt.plot(showAngle['Time'], showAngle['Zen'], label='Elevation', color='tab:green', marker='x', linestyle='--')
+    plt.xlabel('Time')
+    plt.ylabel('Angle (degrees)')
+    plt.title('Angles over Time')
+    plt.grid()
+    plt.legend()
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    plt.savefig('Plots/Angles_over_Time.png',dpi = 300)
+    plt.savefig('Plots/Angles_over_Time.svg')
+
+    plt.close()
+
+    plt.plot(showTSRC['T_mid'], showTSRC['T0_ave'], label='T0 Average', color='tab:blue', marker='o', linestyle='-')
+    plt.plot(showTSRC['T_mid'], showTSRC['T1_ave'], label='T1 Average', color='tab:orange', marker='x', linestyle='--')
+    plt.plot(showTSRC['T_mid'], showTSRC['T2_ave'], label='T2 Average', color='tab:green', marker='o', linestyle='-')
+    plt.plot(showTSRC['T_mid'], showTSRC['T3_ave'], label='T3 Average', color='tab:purple', marker='x', linestyle='--')
+    plt.xlabel('Time')
+    plt.ylabel('Temperature (K)')
+    plt.title('Temperature over Time')
+    plt.grid()
+    plt.legend()
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    plt.savefig('Plots/Temperature_over_Time.png',dpi = 300)
+    plt.savefig('Plots/Temperature_over_Time.svg')
+
+    plt.close()
+
+    print("Plots done")
+
