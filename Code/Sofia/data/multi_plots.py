@@ -1,6 +1,6 @@
 """
 Yifu
-
+Diff time format show
 purpose: To read text files and plot the 
     4 combinations of data which including TSRC0 TSRC1 TSRC2 TSRC3 EL AZ
     Time? TIME/TIMEWVR
@@ -30,12 +30,16 @@ with open('20240612_190135_scanAz_slow.txt', 'r') as f:
 df = pd.DataFrame(new_f)
 
 #plot
-fig, axs = plt.subplots(figsize=(40, 15), nrows=4 )
+fig, axs = plt.subplots(figsize=(50, 15), nrows=4 )
 
-timewvr = df[1][1:].astype(float)
+time = df[0]
+for i in range(1, len(time)):
+    time[i] = time[i].replace('T', ' ')
+    
+time_datetime = pd.to_datetime(time[1:], format='%Y-%m-%d %H:%M:%S.%f')
 
-axs[3].scatter(df.index[1:], timewvr, label='TIMEWVR', s=0.2)
-axs[3].set_title('TIMEWVR')
+axs[3].scatter(df.index[1:], time_datetime, label='TIME', s=0.2)
+axs[3].set_title('TIME')
 axs[3].yaxis.set_major_locator(MaxNLocator(nbins=10))
 
 T0 = df[19][1:].astype(float)
