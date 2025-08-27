@@ -20,9 +20,8 @@ file_list.sort()
 
 len_list = []
 #print(file_list)
-save_arr = np.array([])
-save_arr = save_arr.reshape(0, 21)
-time_take = np.array([])
+save_arr = []
+time_take = []
 
 time_take_start_overall = t_fun.perf_counter()
 
@@ -107,15 +106,17 @@ for file in file_list:
 
         data_point = len(T0_chunk)
 
-        save_arr = np.append(save_arr, [[Time_start, Time_end, Time_avg, Time_leap, data_point, T0_max, T0_min, T0_avg, T0_std, T1_max, T1_min, T1_avg, T1_std, T2_max, T2_min, T2_avg, T2_std, T3_max, T3_min, T3_avg, T3_std]], axis=0)
+        save_arr.append([Time_start, Time_end, Time_avg, Time_leap, data_point, T0_max, T0_min, T0_avg, T0_std, T1_max, T1_min, T1_avg, T1_std, T2_max, T2_min, T2_avg, T2_std, T3_max, T3_min, T3_avg, T3_std]) 
 
     time_take_end_one = t_fun.perf_counter()
     print(f"Time taken for {file}: {time_take_end_one - time_take_start_one} seconds")
-    time_take = np.append(time_take, time_take_end_one - time_take_start_one)
+    time_take.append(time_take_end_one - time_take_start_one)
 
-np.save(f"ProTest.npy", save_arr)
+save_arr_np = np.array(save_arr)
+np.save(f"ProTest.npy", save_arr_np)
 
 time_take_end_overall = t_fun.perf_counter()
 print(f"Overall time taken: {time_take_end_overall - time_take_start_overall} seconds")
-time_take = np.append(time_take, time_take_end_overall - time_take_start_overall)
-np.save(f"ProTest_time.npy", time_take)
+time_take.append(time_take_end_overall - time_take_start_overall)
+time_take_np = np.array(time_take)
+np.save(f"ProTest_time.npy", time_take_np)
