@@ -46,42 +46,45 @@ for file in file_list:
     #print(len(T_since_Epo))
     len_list.append(len(T_since_Epo))
 
-    # plt.hist(T_since_Epo, bins=100)
-    # plt.xlabel('Time since Epoch (seconds)')
-    # plt.ylabel('Frequency')
-    # plt.title(f'Histogram of Time since Epoch {file}')
-    # plt.savefig(f'hist/hist_time_since_epoch_{file}.png')
-    # plt.show()
+    if len(T_since_Epo) < 3420 and len(T_since_Epo) > 3400:
+        plt.hist(T_since_Epo, bins=100)
+        plt.xlabel('Time since Epoch (seconds)')
+        plt.ylabel('Frequency')
+        plt.title(f'Histogram of Time since Epoch {file}')
+        plt.savefig(f'hist/hist_time_since_epoch_{file}.png')
+        plt.show()
+        plt.close()
 
-counts, bins, patches = plt.hist(len_list, bins=10, edgecolor='black')
-for count, patch in zip(counts, patches):
-    # Get the coordinates of the bar
-    x = patch.get_x() + patch.get_width() / 2  # Center the text
-    y = patch.get_height()                     # Top of the bar
+#counts, bins, patches = plt.hist(len_list, bins=100, edgecolor='black')
 
-    # Don't label bars with a value of 0
-    if count > 0:
-        # Add the text with a small offset (y + 2)
-        # ha='center' and va='bottom' help with alignment
-        plt.text(x, y + 2, int(count), ha='center', va='bottom', fontsize=12)
+# # for count, patch in zip(counts, patches):
+# #     # Get the coordinates of the bar
+# #     x = patch.get_x() + patch.get_width() / 2  # Center the text
+# #     y = patch.get_height()                     # Top of the bar
 
-plt.xlabel('Length of Time since Epoch (seconds)')
-plt.ylabel('Number of Occurrences')
-plt.title('Histogram of Length of Time since Epoch(with counts)')
-plt.savefig(f'hist/hist_length_counts.png')
-plt.show()
+# #     # Don't label bars with a value of 0
+# #     if count > 0:
+# #         # Add the text with a small offset (y + 2)
+# #         # ha='center' and va='bottom' help with alignment
+# #         plt.text(x, y + 2, int(count), ha='center', va='bottom', fontsize=12)
 
-# plt.ylim(0,(len(file_list)/500))
-# plt.title(f'Histogram of Length of Time since Epoch(Y<{(len(file_list)/500)})')
-# plt.savefig(f'hist/hist_length_lim_Y_less_{(len(file_list)/500)}.png')
+# plt.xlabel('Length of Time since Epoch (seconds)')
+# plt.ylabel('Number of Occurrences')
+# plt.title('Histogram of Length of Time since Epoch(with counts)')
+# #plt.savefig(f'hist/hist_length_counts.png')
+# plt.show()
 
-# plt.xlim(1000, 3250)
-# plt.title(f'Histogram of Length of Time since Epoch(X:1000-3250)')
-# plt.savefig(f'hist/hist_length_lim_X_1000_3250.png')
+# # plt.ylim(0,(len(file_list)/500))
+# # plt.title(f'Histogram of Length of Time since Epoch(Y<{(len(file_list)/500)})')
+# # plt.savefig(f'hist/hist_length_lim_Y_less_{(len(file_list)/500)}.png')
 
-# plt.ylim(0,len(file_list))
-# plt.xlim(3250, 3600)
-# plt.title(f'Histogram of Length of Time since Epoch(X:3250-3600)')
-# plt.savefig(f'hist/hist_length_lim_X_3250_3600.png')
-#plt.show()
-plt.close()
+# # plt.xlim(1000, 3250)
+# # plt.title(f'Histogram of Length of Time since Epoch(X:1000-3250)')
+# # plt.savefig(f'hist/hist_length_lim_X_1000_3250.png')
+
+# plt.ylim(0,len(file_list)/500)
+# plt.xlim(3300, 3450)
+# plt.title(f'Histogram of Length of Time since Epoch(X:3300-3450)')
+# plt.savefig(f'hist/hist_length_lim_X_3300_3450.png')
+# plt.show()
+# plt.close()

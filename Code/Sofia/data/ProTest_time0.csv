@@ -1,0 +1,11 @@
+Event Name,Time Taken (s)
+read 20240724_110135_scanAz_slow.txt,0.1401
+read 20240811_190134_scanAz_slow.txt,0.2127
+read 20250102_010135_scanAz_slow.txt,0.2309
+read 20250102_030134_scanAz_slow.txt,0.2398
+read 20250102_050134_scanAz_slow.txt,0.2466
+read 20250102_070135_scanAz_slow.txt,0.2253
+read 20250102_100135_scanAz_slow.txt,0.2241
+read 20250102_110134_scanAz_slow.txt,0.2572
+read 20250102_140135_scanAz_slow.txt,0.2900
+Overall,2.3253
