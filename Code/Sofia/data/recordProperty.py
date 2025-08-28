@@ -1,8 +1,6 @@
 """
-Ver 0.0
-Before class
-Ver 0.1
-Add timer 
+Ver 1.0
+    add median
 
 
 """
@@ -84,29 +82,38 @@ for file in file_list:
         T0_max = np.max(T0_chunk)
         T0_min = np.min(T0_chunk)
         T0_avg = np.mean(T0_chunk)
+        T0_median = np.median(T0_chunk)
         T0_std = np.std(T0_chunk)
 
         T1_chunk = T1[i:chunk_end]
         T1_max = np.max(T1_chunk)
         T1_min = np.min(T1_chunk)
         T1_avg = np.mean(T1_chunk)
+        T1_median = np.median(T1_chunk)
         T1_std = np.std(T1_chunk)
 
         T2_chunk = T2[i:chunk_end]
         T2_max = np.max(T2_chunk)
         T2_min = np.min(T2_chunk)
         T2_avg = np.mean(T2_chunk)
+        T2_median = np.median(T2_chunk)
         T2_std = np.std(T2_chunk)
 
         T3_chunk = T3[i:chunk_end]
         T3_max = np.max(T3_chunk)
         T3_min = np.min(T3_chunk)
         T3_avg = np.mean(T3_chunk)
+        T3_median = np.median(T3_chunk)
         T3_std = np.std(T3_chunk)
 
         data_point = len(T0_chunk)
 
-        save_arr.append([Time_start, Time_end, Time_avg, Time_leap, data_point, T0_max, T0_min, T0_avg, T0_std, T1_max, T1_min, T1_avg, T1_std, T2_max, T2_min, T2_avg, T2_std, T3_max, T3_min, T3_avg, T3_std]) 
+        save_arr.append([Time_start, Time_end, Time_avg, Time_leap, data_point, 
+                         T0_max, T0_min, T0_avg, T0_median, T0_std, 
+                         T1_max, T1_min, T1_avg, T1_median, T1_std,
+                         T2_max, T2_min, T2_avg, T2_median, T2_std,
+                         T3_max, T3_min, T3_avg, T3_median, T3_std
+                         ]) 
 
     time_take_end_one = t_fun.perf_counter()
     print(f"Time taken for {file}: {time_take_end_one - time_take_start_one} seconds")
