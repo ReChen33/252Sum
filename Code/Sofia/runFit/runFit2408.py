@@ -3,7 +3,7 @@ This code should also work for quasar
 """
 
 import unzip
-import scanAz_slow_2fit_pwv as scanAz
+import scanAZ2 as scanAz
 import py2csv
 
 yymm = 2408  # file containing the month values
@@ -24,7 +24,9 @@ unzipper.time_take_file = f"time_unzip_take{yymm}.csv"  # Set the time take file
 #py2csv.sum_time_take(unzipper.time_take_file)
 
 doFit = scanAz.slow2FitPWV()
-doFit.num2Process = 640  # set the number of TIME keys to process at a time
+#doFit.num2Process = 640  # set the number of TIME keys to process at a time
+doFit.npy_name = f"Pro_{yymm}.npy"  # name the {yymm} npy file
+
 doFit.path_save = path_data
 doFit.date_pwv_file = date_pwv_FN  # file to save the date and PWV values
 doFit.time_take_file = f"time_pwv_take{yymm}.csv" # file to save the time taken for each TIME

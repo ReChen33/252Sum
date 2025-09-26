@@ -1,7 +1,7 @@
 """
-Ver 1.0 
-combine scanAZ_*.py and recordProperty.py
-remove average of data in scanAZ_*.py
+Ver 2.0 
+fix a bug to record the time taken for each dat file processing
+remove copy error num2Pro = 315
 
 """
 
@@ -88,7 +88,35 @@ class slow2FitPWV:
         self.time_take_file = 'time_take.csv'  # file to save the time taken for each TIME
         self.date_pwv_file = 'time_pwv.csv'  # file to save the date and PWV values
         #self.percentage = 0.3  # percentage to find the extreme peak, default is 30%
- 
+
+    def remove_old_files(self,path_save = "results/"):
+            """"
+            purpose:
+            remove old .dat, .dat.amc, .dat.ams, and .dat.amr files in the specified path to save space
+            """
+            
+            try:
+                for file in glob.glob(f'{path_save}*.dat'):
+                    #print(f"Removing File: {file}")
+                    os.remove(file)
+                for file in glob.glob(f'{path_save}*.dat.amc'):
+                    #print(f"Removing File: {file}")
+                    
+                    os.remove(file)
+                for file in glob.glob(f'{path_save}*.dat.ams'):
+                    #print(f"Removing File: {file}")
+                    
+                    os.remove(file)
+                for file in glob.glob(f'{path_save}*.dat.amr'):
+                    #print(f"Removing File: {file}")
+                    
+                    os.remove(file)
+
+            except Exception as e:
+                print(f"Error removing files: {e}")
+
+            #print("am fit files removed done.")
+
     def read_am(self, all_lines_variable:list, time:str, zen_ang:float):
         """
         purpose:
@@ -332,20 +360,22 @@ class slow2FitPWV:
         T_since_Epo = np.zeros(len(time))
         for i in range(1, len(time)+1):
             time[i] = time[i].replace('T', ' ')
-            print(time[i])
-            T_since_Epo[i-1] = t_fun.mktime(t_fun.strptime(time[i], "%Y-%m-%d %H:%M:%S.%f"))
+            #time[i] example: "2024-06-12 19:12:05.551599"
+            t_temp = datetime.strptime(time[i], "%Y-%m-%d %H:%M:%S.%f")
+            #print("t_temp:", t_temp)
+            T_since_Epo[i-1] = t_temp.timestamp()  # convert to seconds since the Epoch
+            #print("T_since_Epo[i-1]:", T_since_Epo[i-1])
+            #convert back to check
+            #print("check: ",datetime.fromtimestamp(T_since_Epo[i-1]).strftime('%Y-%m-%d %H:%M:%S.%f'))
 
-            
+        print("\n", len(T_since_Epo), "time points read from", scanAz_slow_filename)
         if len(T_since_Epo) < 3420:
-            #print("skip")
+            #print("!!!skip")
             return
 
-        num2Pro = 315
-
-        start = perf_counter()  # start the timer
-
         for i in range(0, len(T_since_Epo), num2Pro):  
-            #save npy files
+            start = perf_counter()  # start the timer for processing the file
+            
             Time_start = T_since_Epo[i]
 
             if i + num2Pro - 1 < len(T_since_Epo):
@@ -397,7 +427,7 @@ class slow2FitPWV:
                             T3_max, T3_min, T3_avg, T3_median, T3_std
                             ]) 
 
-            print(f"Processed TIME from {datetime.fromtimestamp(Time_start).strftime('%Y%m%dS%H%M%S.%fE')} to {datetime.fromtimestamp(Time_end).strftime('%Y%m%dS%H%M%S.%fE')} with {data_point} data points.")
+            # print(f"Processed TIME from {datetime.fromtimestamp(Time_start).strftime('%Y%m%dS%H%M%S.%fE')} to {datetime.fromtimestamp(Time_end).strftime('%Y%m%dS%H%M%S.%fE')} with {data_point} data points.")
 
             time_name = datetime.fromtimestamp(Time_start).strftime("%Y%m%dS%H%M%S.%fE") + datetime.fromtimestamp(Time_end).strftime("%H%M%S.%f")
             #write the dat filename based on the time
@@ -494,6 +524,13 @@ class slow2FitPWV:
         am_temp_inp = self.am_temp  # default am template file
 
         num4sAzFN = 0
+
+        #clear the old dat & dat.* files 
+        if path_save is not None:
+            self.remove_old_files(path_save = path_save)
+        else:
+            self.remove_old_files("") 
+
         for sAz_slow_FN in sAz_slow_FNs:
             num4sAzFN += 1  # count the number of slow scan azimuth files processed            
             self.slow2Dat(path = path_save, scanAz_slow_filename = sAz_slow_FN, am_temp = am_temp_inp)
@@ -501,7 +538,7 @@ class slow2FitPWV:
             print(f"Processed: {sAz_slow_FN} \n{num4sAzFN} in {len(sAz_slow_FNs)} slow scan azimuth files.")
 
         save_arr_np = np.array(self.save_arr)
-        npy_name = self.path_save
+        npy_name = self.npy_name
         np.save(f"{npy_name}", save_arr_np)
 
 
