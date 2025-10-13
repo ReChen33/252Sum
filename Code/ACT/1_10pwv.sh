@@ -1,4 +1,3 @@
-#use Script to show the PWV 1 to 10 pwv step by 1
 
 rm -f 0.1_1pwv_inp.txt
 rm -f 0.1_1pwv_inp.err
@@ -7,7 +6,7 @@ rm -f 0.1_1pwv_inp.err
 # float sequence
 for PWV in $(awk '
         BEGIN {
-            for (p = 0.1; p <= 1; p += 0.1)
+            for (p = 0.1; p <= 1.1; p += 1)
                 printf("%f\n", p)
 
             }
