@@ -10,24 +10,19 @@ import urllib.request as urllib2
 
 #import matplotlib as mpl
 #mpl.use('Agg')
-from matplotlib.dates import relativedelta
 from matplotlib.pyplot import *
-from dateutil.relativedelta import relativedelta
-import pandas as pd
+from optparse import OptionParser
 
 stations = []
 stations.append(['74494','Chattam']) # Chattam, MA
 stations.append(['74389','Gray']) # Gray Maine
 stations.append(['72518','Albany']) # ALbany NY
 stations.append(['04417','Summit']) # Summit, Greenland
-stations.append(['89009','SouthPole']) 
+stations.append(['89009','SouthPole']) # Summit, Greenland
 
 
 #basedir = "/n/home01/dbarkats/work/20150804_pwv_sounding/pwv_plots"
-basedir = "/pwv_plots/"
-basedir = os.path.join(os.path.dirname(__file__), 'pwv_plots')
-os.makedirs(basedir, exist_ok=True)
-#print("basedir path: ",basedir)
+basedir = os.getenv("HOME") + "/pwv_sounding/plots/"
 
 def system_except(cmd):
     ret = os.system(cmd)
@@ -45,9 +40,7 @@ def get_wvr_data(stationId = 0, date=None):
         now = datetime.datetime.strptime(date,'%Y%m%d')
     else:
         now = datetime.datetime.now()
-
-    #print("getting data for date: ",now)
-
+        
     today =('%s'%now)[0:10]
     month = '%02d'%int(now.month)
     year = now.year
@@ -57,7 +50,7 @@ def get_wvr_data(stationId = 0, date=None):
     urlbase = 'http://weather.uwyo.edu/cgi-bin/sounding?region=naconf&TYPE=TEXT%3ALIST'
     url = '%s&YEAR=%s&MONTH=%s&FROM=all&TO=%s12&STNM=%s'\
           %(urlbase,year,month,lastday,station[0])
-    print("data URL: ",url)
+    print(url)
 
     # read files
     content = str(urllib2.urlopen(url).read())
@@ -92,22 +85,18 @@ def get_wvr_data(stationId = 0, date=None):
     return {'datetime': datetimelist, 'value': valuelist, 'station':station}
   
 def plot_pwv(d):
-    #save d as csv
-    try:
-        df = pd.DataFrame(data=d)
-        df.to_csv('%s/PWV_%s.csv'%(basedir,station[0]), index=False)
-    
+
     t= d['datetime']
     pwv = d['value'] 
     station = d['station']
     year = d['datetime'][0].year
-    #month = int(d['datetime'][0].month)
+    month = int(d['datetime'][0].month)
 
     # make a plot for this month and save
     plf = figure()
     subpl = plf.add_subplot(1, 1, 1)
     subpl.plot_date(t,pwv,'.-')
-    subpl.set_title('PWV from %s radio-sonde data for %s-%02d'%(station[1],year))
+    subpl.set_title('PWV from %s radio-sonde data for %s-%02d'%(station[1],year,month))
     subpl.set_xticklabels(\
                           [litem.get_text() for litem in subpl.get_xticklabels()], \
                           fontsize='small', rotation=30, ha='right')
@@ -117,14 +106,14 @@ def plot_pwv(d):
     subpl.yaxis.set_major_formatter( \
                                      matplotlib.ticker.ScalarFormatter(useOffset=False))
     subpl.grid()
-    ylim([0,5])
-    # xl = xlim()
-    # xlim([xl[0]-1,xl[0]+32])   
-    savefig('%s/PWV_%s%02d_%s_lin.png'%(basedir,year,station[0]))
-
-    ylim([0.1,10])
+    ylim([0,50])
+    xl = xlim()
+    xlim([xl[0]-1,xl[0]+32])
+   
+    savefig('%s/PWV_%s%02d_%s_lin.png'%(basedir,year,month,station[0]))
+    ylim([0.1,100])
     yscale('log')
-    savefig('%s/PWV_%s%02d_%s_log.png'%(basedir,year,station[0]))
+    savefig('%s/PWV_%s%02d_%s_log.png'%(basedir,year,month,station[0]))
 
 def mod_index():
         
@@ -228,38 +217,31 @@ def get_datetime_from_isodatetime(isodatetime):
 
 
 if __name__ == '__main__':
-   
-    station_id = 4
-    start_date = datetime.date(2024, 1, 1)
-    end_date   = datetime.date(2025, 2, 16)
+    usage = '''
+  
+    '''
 
-    all_data = {
-        'datetime': [],
-        'value': [],
-        'station': []
-    }
+    #options ....
+    parser = OptionParser(usage=usage)
 
-    current_date = start_date
-    while current_date <= end_date:
-        date_str = current_date.strftime("%Y%m%d")
-        print(f"Getting data for {date_str}...")
-
-        d = get_wvr_data(stationId=station_id, date=date_str)
-        if d and d['datetime']:  # skip empty results
-            all_data['datetime'].extend(d['datetime'])
-            all_data['value'].extend(d['value'])
-            all_data['station'].extend(d['station'])
-        
-        current_date += relativedelta(months=1)
-
-    print(f"Collected {len(all_data['datetime'])} data points for {station_id}.")
-   
-
-    try:
-        year = d['datetime'][0].year
-        plot_pwv(d)
-    except:
-        print('plot failed for one year for station %i, date %s' % (station_id, start_date))
-    #mod_index()
+    parser.add_option("-d", "--date",
+                      dest="date",
+                      type= 'string',
+                      help="date for which we want to plot ther pwv. None by default")
+    
+    
+    (options, args) = parser.parse_args()
+    
+    date = options.date
+    print(date)
+    
+    for id in [0,1,2,3,4]:
+        d = get_wvr_data(stationId = id, date = date)
+        try:
+            year = d['datetime'][0].year
+            plot_pwv(d)
+        except:
+            print('plot failed for station %i, date %s' % id, date)
+    mod_index()
 
     #system_except('rsync -auv --progress %s /n/holylfs04/LABS/kovac_lab/www/dbarkats/'%basedir)
