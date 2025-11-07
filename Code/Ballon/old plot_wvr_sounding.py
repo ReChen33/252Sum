@@ -21,8 +21,9 @@ stations.append(['04417','Summit']) # Summit, Greenland
 stations.append(['89009','SouthPole']) # Summit, Greenland
 
 
-#basedir = "/n/home01/dbarkats/work/20150804_pwv_sounding/pwv_plots"
-basedir = os.getenv("HOME") + "/pwv_sounding/plots/"
+basedir = "/pwv_plots/"
+basedir = os.path.join(os.path.dirname(__file__), 'pwv_plots')
+os.makedirs(basedir, exist_ok=True)
 
 def system_except(cmd):
     ret = os.system(cmd)
@@ -231,17 +232,19 @@ if __name__ == '__main__':
     
     
     (options, args) = parser.parse_args()
-    
-    date = options.date
+
+    date = datetime.date(2024, 1, 1)
+    date = date.strftime('%Y%m%d')
     print(date)
     
-    for id in [0,1,2,3,4]:
+    for id in [4]:
         d = get_wvr_data(stationId = id, date = date)
         try:
             year = d['datetime'][0].year
+            print(d)
             plot_pwv(d)
         except:
             print('plot failed for station %i, date %s' % id, date)
-    mod_index()
+    #mod_index()
 
     #system_except('rsync -auv --progress %s /n/holylfs04/LABS/kovac_lab/www/dbarkats/'%basedir)

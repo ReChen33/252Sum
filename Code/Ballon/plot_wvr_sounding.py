@@ -62,6 +62,14 @@ def get_wvr_data(stationId = 0, date=None):
     # read files
     content = str(urllib2.urlopen(url).read())
     lines = content.split('\\n')
+
+    #save lines to a file for debugging
+    f = open('%s/debug_wvr_%s_%s_%s.txt'%(basedir,station[1],year,month),'w')
+    f.write(f"data URL: {url}\n")
+    for line in lines:
+       f.write(line+f'\n')
+    f.close()
+
     datetimelist = []
     valuelist = []
     nlines = np.size(lines)
@@ -92,39 +100,54 @@ def get_wvr_data(stationId = 0, date=None):
     return {'datetime': datetimelist, 'value': valuelist, 'station':station}
   
 def plot_pwv(d):
+    # make sure each row has one datetime, one value, and station info
+    t = d['datetime']
+    pwv    = d['value']
+    station   = d['station'][1]   # 'SouthPole' or pick one of the two
+    year = d['datetime'][0].year
+    # t= d['datetime']
+    # pwv = d['value'] 
+    # station = d['station']    
+    # month = int(d['datetime'][0].month)
+
     #save d as csv
     try:
-        df = pd.DataFrame(data=d)
-        df.to_csv('%s/PWV_%s.csv'%(basedir,station[0]), index=False)
-    
-    t= d['datetime']
-    pwv = d['value'] 
-    station = d['station']
-    year = d['datetime'][0].year
-    #month = int(d['datetime'][0].month)
+        
+        df = pd.DataFrame({
+            'datetime': t,
+            'PWV': pwv,
+            'station': [station] * len(pwv)
+        })
+
+        outpath = f'{basedir}/PWV_{station}.csv'
+        df.to_csv(outpath, index=False)
+        print(f"Saved CSV: {outpath}")
+
+    except Exception as e:
+        print("Failed to save data as CSV:", e)
+
+    print("plotting PWV data...")
 
     # make a plot for this month and save
     plf = figure()
     subpl = plf.add_subplot(1, 1, 1)
     subpl.plot_date(t,pwv,'.-')
-    subpl.set_title('PWV from %s radio-sonde data for %s-%02d'%(station[1],year))
-    subpl.set_xticklabels(\
-                          [litem.get_text() for litem in subpl.get_xticklabels()], \
-                          fontsize='small', rotation=30, ha='right')
+    subpl.set_title('PWV from %s radio-sonde data for %s'%(station,year))
+
     subpl.set_ylabel('PWV [mm]')
     subpl.xaxis.set_major_formatter(\
                                     matplotlib.dates.DateFormatter('%m-%d'))
-    subpl.yaxis.set_major_formatter( \
+    subpl.yaxis.set_major_formatter(\
                                      matplotlib.ticker.ScalarFormatter(useOffset=False))
     subpl.grid()
     ylim([0,5])
     # xl = xlim()
     # xlim([xl[0]-1,xl[0]+32])   
-    savefig('%s/PWV_%s%02d_%s_lin.png'%(basedir,year,station[0]))
+    savefig('%s/PWV_oneyear_%s_%s_lin.png'%(basedir,year,station[0]))
 
     ylim([0.1,10])
     yscale('log')
-    savefig('%s/PWV_%s%02d_%s_log.png'%(basedir,year,station[0]))
+    savefig('%s/PWV_oneyear_%s_%s_log.png'%(basedir,year,station[0]))
 
 def mod_index():
         
@@ -231,13 +254,14 @@ if __name__ == '__main__':
    
     station_id = 4
     start_date = datetime.date(2024, 1, 1)
-    end_date   = datetime.date(2025, 2, 16)
+    end_date   = datetime.date(2024, 1, 1)
 
     all_data = {
         'datetime': [],
         'value': [],
         'station': []
     }
+    
 
     current_date = start_date
     while current_date <= end_date:
@@ -252,13 +276,14 @@ if __name__ == '__main__':
         
         current_date += relativedelta(months=1)
 
-    print(f"Collected {len(all_data['datetime'])} data points for {station_id}.")
+    #print(f"Collected {len(all_data['datetime'])} data points for {station_id}.")
    
+    #print(all_data)
 
     try:
-        year = d['datetime'][0].year
-        plot_pwv(d)
-    except:
+        plot_pwv(all_data)
+    except Exception as e:
+        print(e)
         print('plot failed for one year for station %i, date %s' % (station_id, start_date))
     #mod_index()
 
