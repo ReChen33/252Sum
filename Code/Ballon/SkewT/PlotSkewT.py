@@ -19,10 +19,9 @@ if not os.path.exists(os.path.join(base_dir, 'fig')):
     os.makedirs(os.path.join(base_dir, 'fig'))
 
 #create error log txt file
-if not os.path.exists(os.path.join(base_dir, 'error_log.txt')):
-    with open(os.path.join(base_dir, 'error_log.txt'), 'w+') as f:
-        f.write('Error Log\n')
-        f.write('========= ========= =========\n\n')
+with open(os.path.join(base_dir, 'error_log.txt'), 'w+') as f:
+    f.write('Error Log\n')
+    f.write('========= ========= =========\n\n')
 
 years = [2024,2025]
 for month in range(1,13):
@@ -31,19 +30,22 @@ for month in range(1,13):
             data00_2024 = datetime(years[0], month, days, 0)
             data12_2024 = datetime(years[0], month, days, 12)
 
+            data_list.append(data00_2024)
+            data_list.append(data12_2024)
+
             if month == 1 or month == 2:
                 data00_2025 = datetime(years[1], month, days, 0)
                 data12_2025 = datetime(years[1], month, days, 12)
+                data_list.append(data00_2025)
+                data_list.append(data12_2025)
 
         except:
             with open(os.path.join(base_dir, 'error_log.txt'), 'a') as f:
                 f.write(f'Invalid date: {years[0]}-{month}-{days}\n')
             continue
-        
-        data_list.append(data00_2024)
-        data_list.append(data12_2024)
-        data_list.append(data00_2025)
-        data_list.append(data12_2025)
+
+with open(os.path.join(base_dir, 'error_log.txt'), 'a') as f:
+    f.write(f'Total valid dates to process: {len(data_list)}\n\n')
 
 
 station = '89009'
@@ -78,7 +80,7 @@ for date in data_list:
 
     plt.title(f'Skew-T \n South Pole {date.strftime("%Y-%m-%d %H:%M UTC")}', fontsize=16)
     fig.savefig(os.path.join(base_dir, f'fig/SkewT_SP_{date.strftime("%Y_%m_%d_%H")}.png'), dpi=300)
-    plt.clf()
+    #plt.clf()
     plt.close(fig)
     
 
