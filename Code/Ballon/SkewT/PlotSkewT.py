@@ -79,7 +79,7 @@ for date in data_list:
     skewt.ax.legend(loc='best')
 
     plt.title(f'Skew-T \n South Pole {date.strftime("%Y-%m-%d %H:%M UTC")}', fontsize=16)
-    fig.savefig(os.path.join(base_dir, f'fig/SkewT_SP_{date.strftime("%Y_%m_%d_%H")}.png'), dpi=300)
+    fig.savefig(os.path.join(base_dir, f'fig/test_SkewT_SP_{date.strftime("%Y_%m_%d_%H")}.png'), dpi=300)
     #plt.clf()
     plt.close(fig)
     
