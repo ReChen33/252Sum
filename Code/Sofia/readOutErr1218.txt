@@ -1,0 +1,84 @@
+Read Out Errors:
+
+
+Processing file: saveCSV\time_pwv_take2406.csv
+File: saveCSV\time_pwv_take2406.csv has zero time values:
+                                                                                       TIME  take TIME (seconds)
+2739  read amc file failed results2406/20240616S010638.970812E011143.434227_scanAz_slow.dat                  0.0
+2741  read amc file failed results2406/20240616S011144.396218E011645.837467_scanAz_slow.dat                  0.0
+2743  read amc file failed results2406/20240616S011646.799678E012148.243667_scanAz_slow.dat                  0.0
+2745  read amc file failed results2406/20240616S012149.202331E012650.645484_scanAz_slow.dat                  0.0
+2747  read amc file failed results2406/20240616S012651.607136E013153.048534_scanAz_slow.dat                  0.0
+2749  read amc file failed results2406/20240616S013154.010841E013655.454568_scanAz_slow.dat                  0.0
+2751  read amc file failed results2406/20240616S013656.414854E014157.856773_scanAz_slow.dat                  0.0
+2753  read amc file failed results2406/20240616S014158.817651E014700.262383_scanAz_slow.dat                  0.0
+2755  read amc file failed results2406/20240616S014701.220310E015202.666468_scanAz_slow.dat                  0.0
+2757  read amc file failed results2406/20240616S015203.624735E015636.268109_scanAz_slow.dat                  0.0
+2822  read amc file failed results2406/20240616S091141.023731E091645.531726_scanAz_slow.dat                  0.0
+2824  read amc file failed results2406/20240616S091646.491980E092147.942414_scanAz_slow.dat                  0.0
+2826  read amc file failed results2406/20240616S092148.895863E092650.339647_scanAz_slow.dat                  0.0
+2828  read amc file failed results2406/20240616S092651.300904E093152.745206_scanAz_slow.dat                  0.0
+2830  read amc file failed results2406/20240616S093153.703166E093655.147804_scanAz_slow.dat                  0.0
+2832  read amc file failed results2406/20240616S093656.108265E094157.551303_scanAz_slow.dat                  0.0
+2834  read amc file failed results2406/20240616S094158.510904E094659.954834_scanAz_slow.dat                  0.0
+2836  read amc file failed results2406/20240616S094700.914677E095202.360690_scanAz_slow.dat                  0.0
+2838  read amc file failed results2406/20240616S095203.318352E095635.963379_scanAz_slow.dat                  0.0
+
+Total time taken for each file:
+
+For saveCSV\time_pwv_take2401.csv
+Total time taken: Total time taken: 28354.8801 seconds
+About 845 rows
+
+For saveCSV\time_pwv_take2402.csv
+Total time taken: Total time taken: 236016.3614 seconds
+About 845 rows
+
+For saveCSV\time_pwv_take2403.csv
+Total time taken: Total time taken: 246843.5727 seconds
+About 902 rows
+
+For saveCSV\time_pwv_take2404.csv
+Total time taken: Total time taken: 241389.0346 seconds
+About 873 rows
+
+For saveCSV\time_pwv_take2405.csv
+Total time taken: Total time taken: 229601.4813 seconds
+About 816 rows
+
+For saveCSV\time_pwv_take2406.csv
+Total time taken: Total time taken: 221930.3744 seconds
+About 788 rows
+
+For saveCSV\time_pwv_take2407.csv
+Total time taken: Total time taken: 247500.0971 seconds
+About 904 rows
+
+For saveCSV\time_pwv_take2408.csv
+Total time taken: Total time taken: 247258.8158 seconds
+About 904 rows
+
+For saveCSV\time_pwv_take2409.csv
+Total time taken: Total time taken: 241942.0306 seconds
+About 874 rows
+
+For saveCSV\time_pwv_take2410.csv
+Total time taken: Total time taken: 247138.3989 seconds
+About 904 rows
+
+For saveCSV\time_pwv_take2411.csv
+Total time taken: Total time taken: 213460.2882 seconds
+About 751 rows
+
+For saveCSV\time_pwv_take2412.csv
+Total time taken: Total time taken: 247167.0784 seconds
+About 904 rows
+
+For saveCSV\time_pwv_take2501.csv
+Total time taken: Total time taken: 201816.8806 seconds
+About 705 rows
+
+For saveCSV\time_pwv_take2502.csv
+Total time taken: Total time taken: 10628.7410 seconds
+About 552 rows
+

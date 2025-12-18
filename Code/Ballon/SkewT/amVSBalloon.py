@@ -26,8 +26,8 @@ amc_list.sort()
 #print(amc_list)
 
 data_list = []
-for month in range(1,13):
-    for days in range(1,32):
+for month in range(1,2):
+    for days in range(1,5):
         try:
             data12 = datetime(2024, month, days, 12)
             data_list.append(data12)
@@ -51,6 +51,7 @@ while num_date < len(data_list) and num_file_n < len(amc_list):
     Per_list = []
     Tem_list = []
     vmr_list = []
+    pwv_am_value = 0
 
     #print(f'Processing am {amDate.strftime("%d %H:%M")} with Balloon {date.strftime("%d %H")}')   
     #skip if not the same day
@@ -63,10 +64,10 @@ while num_date < len(data_list) and num_file_n < len(amc_list):
             #print(f'Skipping am {amDate} because it is not on the same day as {date}')
             num_file_n += 1
             continue
-        if amDate.hour != 11:
-            #print(f'Skipping am {amDate} because it is not around 12:00 UTC')
-            num_file_n += 1
-            continue
+        # if amDate.hour != 11 and amDate.hour != 13:
+        #     #print(f'Skipping am {amDate} because it is not around 12:00 UTC')
+        #     num_file_n += 1
+        #     continue
     elif date.month < amDate.month:
         #print(f'Add Balloon {date} because less than {amDate}')
         num_date += 1
@@ -76,7 +77,7 @@ while num_date < len(data_list) and num_file_n < len(amc_list):
         num_file_n += 1
         continue
     #compare with balloon data around 12:00 UTC WVR data around 11:50(the one before 12:00 UTC) 
-    if abs((date - amDate).total_seconds()) <= 700:            
+    if abs((date - amDate).total_seconds()) <= 4000:            
         try:
             time.sleep(0.01)
             df = WyomingUpperAir.request_data(date, station)        
@@ -87,28 +88,33 @@ while num_date < len(data_list) and num_file_n < len(amc_list):
         print(f'Comparing {date} with {amDate}')
         with open(file_path_n, 'r') as file:
             lines = file.readlines()
-            for line in lines:
-                if '# P' in line:
-                    Per = float(line.split(' ')[2].strip()) #mbar=hPa
+            for i in range(len(lines)):
+                if '# P' in lines[i]:
+                    Per = float(lines[i].split(' ')[2].strip()) #mbar=hPa
+                    #print(Per)
                     Per_list.append(Per)
-                elif '# T' in line:
-                    Tem = float(line.split(' ')[2].strip()) #K
-                    Tem_list.append(Tem)    
-                elif 'column h2o hydrostatic' in line and '(* ' not in line:
-                    vmr = float(line.split(' ')[3].strip()) #g/g
+                elif '# T' in lines[i]:
+                    Tem = float(lines[i].split(' ')[2].strip()) #K
+                    Tem_list.append(Tem)
+                elif 'column h2o hydrostatic' in lines[i] and '(* ' not in lines[i]:
+                    vmr = float(lines[i].split(' ')[3].strip()) #g/g
+                    #print(vmr)
                     vmr_list.append(vmr)
-                elif 'column h2o hydrostatic' in line and '(* ' in line:
-                    vmr_0 = float(line.split(' ')[3].strip()) #g/g
-                    vmr = vmr_0 * float(line.split(')  (* ')[1].strip().split(')')[0])
+                elif 'column h2o hydrostatic' in lines[i] and '(* ' in lines[i]:
+                    vmr_0 = float(lines[i].split(' ')[3].strip()) #g/g
+                    #print("vmr_0",vmr_0)
+                    vmr = vmr_0 * float(lines[i].split(')  (* ')[1].strip().split(')')[0])
                     #print(vmr_0, vmr)
                     vmr_list.append(vmr)
+                elif '# total' in lines[i]:
+                    pwv_am = lines[i+3] #such as (xxx um_pwv)
+                    pwv_tot_zen = pwv_am.split('(')[1].strip() #remove the (
+                    pwv_tot_zen = pwv_tot_zen.replace(')', '').strip()  #remove the )
+                    pwv_tot_zen_value = pwv_tot_zen.replace('um_pwv', '').strip()  #remove the um_pwv
+                    #print(f'am PWV: {float(pwv_tot_zen_value)} um')
+                    pwv_am_value = float(pwv_tot_zen_value)
 
-        h = df['height'].values
-        p = df['pressure'].values
-        T = df['temperature'].values
-        Td = df['dewpoint'].values
-        u = df['u_wind'].values
-        v = df['v_wind'].values
+
         
         WVPP = [v * p for v, p in zip(vmr_list, Per_list)] # Water Vapor Partial Pressure (hPa)
         Tem_C = [t - 273.15 for t in Tem_list] # Temperature (°C)
@@ -126,6 +132,14 @@ while num_date < len(data_list) and num_file_n < len(amc_list):
         Per = np.array(Per_list)
         Tem_C = np.array(Tem_C)
 
+        h = df['height'].values
+        p = df['pressure'].values
+        T = df['temperature'].values
+        Td = df['dewpoint'].values
+        u = df['u_wind'].values
+        v = df['v_wind'].values
+        pwv = df['pw'].values[0]*1000  # convert from mm to um
+
         fig = plt.figure(figsize=(12, 12))
         skewt2 = SkewT(fig=fig, rotation=45)
         # plot sounding data
@@ -140,14 +154,20 @@ while num_date < len(data_list) and num_file_n < len(amc_list):
         skewt2.ax.set_ylim(750, 10)
         skewt2.ax.set_xlim(-50, 110)
         skewt2.ax.legend(loc='best', fontsize=24)
-        plt.title(f'Skew-T South Pole \n Balloon {date.strftime("%Y-%m-%d %H")} \n am {amDate.strftime("%Y-%m-%d %H:%M:%S")}', 
-                fontsize=32)
-        fig.savefig(os.path.join(base_dir, f'fig1/SkewT_SP_{amDate.strftime("%Y-%m-%d %H")}.png'), dpi=300)
+        plt.title(f'Skew-T South Pole \n \
+                   Balloon {date.strftime("%Y-%m-%d %H")}; pwv: {pwv} um \n \
+                   am {amDate.strftime("%Y-%m-%d %H:%M:%S")}; pwv: {pwv_am_value} um', 
+                fontsize=30)        
+        # for i in range(-100, 101, 20):
+        #     skewt2.ax.axvline(i, color='black', lw=1.5, ls = '--')
+
+        fig.savefig(os.path.join(base_dir, f'fig1/test2_SkewT_SP_{amDate.strftime("%Y-%m-%d %H")}.png'), dpi=300)
         plt.clf()
         plt.close(fig)
 
-        num_date += 1
+        #num_date += 1
         num_file_n += 1
+        
     else:
         num_file_n += 1
 

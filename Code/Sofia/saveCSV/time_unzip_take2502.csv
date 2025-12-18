@@ -1,0 +1,41 @@
+TIME,take TIME (seconds)
+unzip 20250201.zip,0.0261
+delete_unneeded_files,0.0031
+unzip 20250202.zip,0.6045
+delete_unneeded_files,0.0416
+unzip 20250203.zip,0.5924
+delete_unneeded_files,0.0417
+unzip 20250204.zip,0.6229
+delete_unneeded_files,0.0436
+unzip 20250205.zip,0.6214
+delete_unneeded_files,0.0436
+unzip 20250206.zip,0.6226
+delete_unneeded_files,0.0436
+unzip 20250207.zip,0.6215
+delete_unneeded_files,0.0437
+unzip 20250208.zip,0.6239
+delete_unneeded_files,0.0438
+unzip 20250209.zip,0.6246
+delete_unneeded_files,0.0439
+unzip 20250210.zip,0.6226
+delete_unneeded_files,0.0440
+unzip 20250211.zip,0.6218
+delete_unneeded_files,0.0441
+unzip 20250212.zip,0.6220
+delete_unneeded_files,0.0443
+unzip 20250213.zip,0.6220
+delete_unneeded_files,0.0444
+unzip 20250214.zip,0.6216
+delete_unneeded_files,0.0445
+unzip 20250215.zip,0.6219
+delete_unneeded_files,0.0446
+unzip 20250216.zip,0.6230
+delete_unneeded_files,0.0447
+unzip 20250217.zip,0.6228
+delete_unneeded_files,0.0448
+unzip 20250218.zip,0.6214
+delete_unneeded_files,0.0449
+unzip 20250219.zip,0.6226
+delete_unneeded_files,0.0449
+
+Total time taken: 11.9754 seconds
