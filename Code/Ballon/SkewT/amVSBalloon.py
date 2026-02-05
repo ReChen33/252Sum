@@ -26,8 +26,8 @@ amc_list.sort()
 #print(amc_list)
 
 data_list = []
-for month in range(1,2):
-    for days in range(1,5):
+for month in range(1,3):
+    for days in range(1,32):
         try:
             data12 = datetime(2024, month, days, 12)
             data_list.append(data12)
@@ -148,20 +148,22 @@ while num_date < len(data_list) and num_file_n < len(amc_list):
         skewt2.plot(Per, T_dry, 'b', label='am Dew Point') # dew point
         skewt2.plot(p, T, 'g', ls = '--', label='Balloon  Air Temperature') # air temperature
         skewt2.plot(p, Td, 'y', ls = '--', label='Balloon Dew Point') # dew point
-
-        skewt2.ax.set_xlabel('Temperature (°C)')
-        skewt2.ax.set_ylabel('Pressure (hPa)')
-        skewt2.ax.set_ylim(750, 10)
-        skewt2.ax.set_xlim(-50, 110)
+    
+        skewt2.ax.set_xlabel('Temperature (°C)', fontsize=24)
+        skewt2.ax.set_ylabel('Pressure (hPa)', fontsize=24)
+        skewt2.ax.tick_params(axis='x', labelsize=24)
+        skewt2.ax.tick_params(axis='y', labelsize=24)
+        skewt2.ax.set_ylim(750, 50)
+        skewt2.ax.set_xlim(-50, 100)
         skewt2.ax.legend(loc='best', fontsize=24)
         plt.title(f'Skew-T South Pole \n \
                    Balloon {date.strftime("%Y-%m-%d %H")}; pwv: {pwv} um \n \
                    am {amDate.strftime("%Y-%m-%d %H:%M:%S")}; pwv: {pwv_am_value} um', 
-                fontsize=30)        
+                fontsize=28)        
         # for i in range(-100, 101, 20):
         #     skewt2.ax.axvline(i, color='black', lw=1.5, ls = '--')
 
-        fig.savefig(os.path.join(base_dir, f'fig1/test2_SkewT_SP_{amDate.strftime("%Y-%m-%d %H")}.png'), dpi=300)
+        fig.savefig(os.path.join(base_dir, f'fig1/0205_SkewT_SP_{amDate.strftime("%Y-%m-%d %H")}.png'), dpi=300)
         plt.clf()
         plt.close(fig)
 
