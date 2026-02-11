@@ -1,0 +1,5 @@
+TIME,take TIME (seconds)
+unzip 20260210.zip,0.6364
+delete_unneeded_files,0.0447
+
+Total time taken: 0.6811 seconds
